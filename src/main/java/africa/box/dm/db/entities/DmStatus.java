@@ -1,0 +1,5 @@
+package africa.box.dm.db.entities;
+
+public enum DmStatus {
+    REFUSE, APPROUVE, EN_ATTENTE, EFFACE, BROUILLON, EN_TRAITEMENT, NOUVEAU, ABANDONNE, INFORMATION, SOUMIS, COMPLEMENT
+}

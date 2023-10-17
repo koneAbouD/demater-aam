@@ -1,0 +1,4 @@
+mail.smtp:
+  auth: true
+  starttls.enable: true
+  quitwait: false

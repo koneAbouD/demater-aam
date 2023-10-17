@@ -1,0 +1,1593 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_12498k4" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.14.0">
+  <decision id="listDocumentForNewAccount" name="list of account Document">
+    <decisionTable id="DecisionTable_04yk134" hitPolicy="COLLECT" biodi:annotationsWidth="400">
+      <input id="Input_1" label="conditions" biodi:width="550" camunda:inputVariable="conditions">
+        <inputExpression id="InputExpression_1" typeRef="string">
+          <text></text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Numero" name="id" typeRef="integer" biodi:width="150" />
+      <output id="OutputClause_1f82omb" label="Nom document" name="name" typeRef="string" biodi:width="277" />
+      <output id="OutputClause_0gisuwf" label="Description" name="description" typeRef="string" biodi:width="229" />
+      <output id="OutputClause_07suitq" label="docCode" name="docCode" typeRef="string" biodi:width="150" />
+      <output id="OutputClause_0q4phgw" label="Nombre de copies" name="numberOfCopies" typeRef="integer" biodi:width="150" />
+      <output id="OutputClause_0b2sb87" label="statut" name="statut" typeRef="string" />
+      <output id="OutputClause_0eqnvc7" label="facultatif" name="facultatif" typeRef="boolean" />
+      <output id="OutputClause_1vgui46" label="fromClient" name="fromClient" typeRef="boolean" />
+      <rule id="DecisionRule_0v38ph3">
+        <inputEntry id="UnaryTests_0s3pjyf">
+          <text>"tous","personnes_physiques_cc","personnes_physiques_ce"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_165h3s7">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iscaaw">
+          <text>"Pièce d'identité (Recto)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vjuahu">
+          <text>"Une copie de la pièce d'identité (CNI, PASSEPORT, ...)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0swxv03">
+          <text>"CNI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g8754u">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vsgq03">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08gurd9">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yjwy4q">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1894igb">
+        <inputEntry id="UnaryTests_10tjkmz">
+          <text>"tous","personnes_physiques_corps_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_081wvx7">
+          <text>3</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b5x5e4">
+          <text>"Certificat de prise de service"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1iyvktg">
+          <text>"Le certificat de prise de service"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ty7ocn">
+          <text>"CERTPS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sl931r">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eeii0o">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jxoag1">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yik4bm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08yjff2">
+        <inputEntry id="UnaryTests_1x8nysw">
+          <text>"tous","personnes_physiques_prive_cc","personnes_physiques_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19ff7f9">
+          <text>5</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wqwgyh">
+          <text>"Justificatif d'emploi"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n04vxq">
+          <text>"Justificatif d'emploi"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d0hfuf">
+          <text>"ATTRAV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mb0yti">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ec3cb">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_156if1a">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xdp81p">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0e6oh4v">
+        <inputEntry id="UnaryTests_1r9s7e3">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_048n4mm">
+          <text>6</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m9o2bu">
+          <text>"Certificat de résidence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09qqghm">
+          <text>"Un certificat de résidence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vnlq3m">
+          <text>"CERTRes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vbk3qs">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gvx8uq">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wzzdxl">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r0ny2l">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1l9bewx">
+        <inputEntry id="UnaryTests_0xw38h9">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1095wo6">
+          <text>7</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hdatr8">
+          <text>"Contrat de bail légalisé"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0grvud8">
+          <text>"Un contrat de bail légalisé"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01xzdx1">
+          <text>"CBAIL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iqq0pm">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jaackd">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11l2pka">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ewg5mp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1c950lg">
+        <inputEntry id="UnaryTests_01iz868">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15w2pxn">
+          <text>8</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vov0ip">
+          <text>"Facture CIE/SODECI/CI TELECOM"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qbx2da">
+          <text>"Une quittance SODECI, CIE ou CI TELECOM portant le nom du demandeur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1f3a5zc">
+          <text>"FactCS"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1boqvec">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03vfrqd">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06lm647">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q4ofyb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zegyxn">
+        <inputEntry id="UnaryTests_18phwbj">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1f1hpex">
+          <text>9</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1owgda0">
+          <text>"Attestation de cloture compte"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00jjfsv">
+          <text>"Une attestation de clôture de compte de la banque d’origine"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19iry8h">
+          <text>"ATTCLO"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_085isr3">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1d29l3e">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0knpdan">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0d8rs95">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tneopv">
+        <inputEntry id="UnaryTests_0qboo0a">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0euhr2g">
+          <text>10</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1givb8l">
+          <text>"Attestation de non redevance"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n8g1qy">
+          <text>"Une attestation de non redevance"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xnv1j3">
+          <text>"ATNRED"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_024151y">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yjouan">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yeh4kd">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wow7tc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1gnicjk">
+        <inputEntry id="UnaryTests_1idaw9k">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09gfcaz">
+          <text>11</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fh9o65">
+          <text>"Carte consulaire"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00uogce">
+          <text>"La carte consulaire"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xezvmu">
+          <text>"CARTECON"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ntzni5">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11rccf3">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1170ecr">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0icu3qq">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_16r8nb9">
+        <inputEntry id="UnaryTests_15nx15p">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1gy401q">
+          <text>12</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0s8mrwg">
+          <text>"Extrait de naissance mineur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1rxfl0x">
+          <text>"l’original de l’extrait de naissance du mineur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02ipq91">
+          <text>"EXTRAITMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02mbw66">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0txn4ly">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r63034">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lfxv4d">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1s9p1x6">
+        <inputEntry id="UnaryTests_0mid71m">
+          <text>"tous","personnes_physiques_corps_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_150qhj1">
+          <text>14</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0koww7w">
+          <text>"Certificat de presence au corps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vqgd9p">
+          <text>"un certificat de presence au corps"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p98ed3">
+          <text>"CRTPRes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m1o40g">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tdg73k">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x1t9u9">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v6ats0">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1btpzq3">
+        <inputEntry id="UnaryTests_075lrud">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_130gyuj">
+          <text>15</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13vpbse">
+          <text>"Justificatif d'emploi"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0tml7ur">
+          <text>"Justificatif d'emploi"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1sge4ya">
+          <text>"ATTRAV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a9jiee">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1oswrod">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mre2tp">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cbma6i">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hj0q5b">
+        <inputEntry id="UnaryTests_059btg2">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0tijrpf">
+          <text>16</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vhb18s">
+          <text>"Bordereau d'envoi/note de service"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i19rbx">
+          <text>"note de service, bordereau d’envoi"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08i23ca">
+          <text>"BORDEREAU"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vf7uoj">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0isnhwr">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dyxjma">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0q8gzlc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_048y3by">
+        <inputEntry id="UnaryTests_07bglzk">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_00eet1x">
+          <text>17</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pxzyup">
+          <text>"Arrête ministériel/décision d’affectation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g9y8gx">
+          <text>"un arrêté ministériel ou la décision d’affectation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0orpor0">
+          <text>"ARRETMIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ugickw">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_08o2tag">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x21jjl">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mmvx6f">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_04qbgxh">
+        <inputEntry id="UnaryTests_19v42li">
+          <text>"tous","personnes_morale_courtier_ass"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_13noi2k">
+          <text>18</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16w8b28">
+          <text>"Arrêté portant agrément des sociétés de courtage d’assurances"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uc2wpv">
+          <text>"L'arrêté portant agrément des sociétés de courtage d’assurances"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ahsikw">
+          <text>"ARRETCOURT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dwym7q">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1q671dn">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01u2p9e">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09ltv96">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hsi9fb">
+        <inputEntry id="UnaryTests_0hjapf8">
+          <text>"tous","personnes_morale"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1t0k108">
+          <text>19</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rvia76">
+          <text>"Registre de Commerce (format OHADA)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lzzmmg">
+          <text>"un registre de Commerce (format OHADA) certifié par le greffe du Tribunal de Commerce d’Abidjan"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hb1q3u">
+          <text>"RCCMM"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11n9hqa">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vnwcon">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ia5zmo">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0bz0qpc">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1caea98">
+        <inputEntry id="UnaryTests_1aszcrn">
+          <text>"tous","personnes_morale"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ae36zg">
+          <text>20</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00trztw">
+          <text>"Déclaration fiscale d’existence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vrugti">
+          <text>"une déclaration fiscale d’existence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h8wvbl">
+          <text>"DFE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1337kb5">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n2keml">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nv2319">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07f81tn">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0qd1lg6">
+        <inputEntry id="UnaryTests_0j0kled">
+          <text>"tous","personnes_morale_ancien"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_12stwcf">
+          <text>21</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hs15ng">
+          <text>"Bilan"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zhnf04">
+          <text>"Bilan (pour les anciennes sociétés)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_146dfmz">
+          <text>"BILAN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_12winyb">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ou5tlz">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wvnf57">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1qt4hnx">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0zj7vzn">
+        <inputEntry id="UnaryTests_0j5i611">
+          <text>"tous","personnes_morale_nouveau"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zu5ap5">
+          <text>22</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nituun">
+          <text>"Compte d’Exploitation Prévisionnel"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02567oy">
+          <text>"Compte d’Exploitation Prévisionnel de l’activité sur 12 mois (pour les nouvelles affaires)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_067ng6l">
+          <text>"CEP"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1azolx5">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_086x6q7">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c31n7u">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18998o9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0xgxcn6">
+        <inputEntry id="UnaryTests_0c69k73">
+          <text>"tous","personnes_morale"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0l2w7zm">
+          <text>23</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x0002y">
+          <text>"Plan de situation de l’Entreprise"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r8neoo">
+          <text>"Le Plan de situation/localisation de l’Entreprise"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lgczow">
+          <text>"PSE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_071lbx2">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13mr8up">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c18fe3">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10p8lli">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0woylhr">
+        <inputEntry id="UnaryTests_0y62kqj">
+          <text>"tous","personnes_morale"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1y1fqht">
+          <text>24</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_13xvhi2">
+          <text>"Cachet de l’entreprise"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16znvnu">
+          <text>"Le Cachet de l’entreprise"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1bmyvw4">
+          <text>"CACHENT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18xpj61">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1j4mbxu">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n0isoz">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02qjxvv">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ntl40u">
+        <inputEntry id="UnaryTests_184tkof">
+          <text>"tous","personnes_morale_societ_civil_ex"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19grqpx">
+          <text>25</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dwjvy2">
+          <text>"Agrément du ministère de l’agriculture"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w0k3x8">
+          <text>"Agrément du ministère de l’agriculture autorisant l’exploitation forestière"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wcml9e">
+          <text>"AGRAGRI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_197n413">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a67h10">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vs3zqx">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xmexxp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0sdkefq">
+        <inputEntry id="UnaryTests_0yv9ssz">
+          <text>"tous","personnes_morale_association_civil","personnes_morale_immobiliere","personnes_morale_sarl","personnes_morale_sa"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0zs44vy">
+          <text>26</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1e7go49">
+          <text>"Statuts"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fafp69">
+          <text>"Les Statuts"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nc67pr">
+          <text>"STATUT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18m11sn">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1o0x08p">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dddr37">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hi6twu">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0j78fxy">
+        <inputEntry id="UnaryTests_1446uq0">
+          <text>"tous","personnes_morale_immobiliere"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1jc6xqd">
+          <text>27</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rkzpae">
+          <text>"Règlement Intérieur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17hmbji">
+          <text>"Le Règlement Intérieur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1cfpwsc">
+          <text>"REGLINT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02f7wwx">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ox1zcw">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ur2js6">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gktr9z">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0dq26rm">
+        <inputEntry id="UnaryTests_1s15gcr">
+          <text>"tous","personnes_morale_immobiliere","personnes_morale_association_civil","personnes_morale_sa"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0alhjia">
+          <text>28</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1pfiixm">
+          <text>"Procès verbal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oaajfa">
+          <text>"Le procès verbal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00te9e0">
+          <text>"PVBAL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0t44vsp">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tk1e8d">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x663q7">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1282jd7">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ql2598">
+        <inputEntry id="UnaryTests_1k7bo3g">
+          <text>"tous","personnes_morale_immobiliere"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ueb6ds">
+          <text>29</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xt2r54">
+          <text>"Délégation de pouvoir"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vwy9tc">
+          <text>"Une Délégation de pouvoir"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h9g1us">
+          <text>"DELEGPOUV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lnwfwf">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yidxi3">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gupm3x">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1idgdw3">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0fkbgkv">
+        <inputEntry id="UnaryTests_0ycq4tf">
+          <text>"tous","personnes_morale_sarl"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0a49tla">
+          <text>30</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fm7ul2">
+          <text>"DNSV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g3m8vm">
+          <text>"Déclaration Notariée de Souscription et de Versement du capital"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14djb1g">
+          <text>"DNSV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1w39q3y">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g80fpi">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_067c1il">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03i76n9">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0jteuhj">
+        <inputEntry id="UnaryTests_0u15gb3">
+          <text>"tous","personnes_morale_sarl","personnes_morale_sa"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_17b4phh">
+          <text>31</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1skoypi">
+          <text>"Journal d’Annonces Légales"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02c7vfo">
+          <text>"Journal d’Annonces Légales (photocopie journal FRAT MAT à légaliser)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a2zia8">
+          <text>"JALEG"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gnzg3q">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0gzynh4">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c1utcg">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rechzb">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0tnixg7">
+        <inputEntry id="UnaryTests_1agr5nu">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06tffqd">
+          <text>32</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fc7qpb">
+          <text>"Documentation CEPICI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0od0dhe">
+          <text>"documentation CEPICI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_136nvjd">
+          <text>"CEPICI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10gyyja">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15maf96">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ofqdnp">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19l6s4p">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0iafn2o">
+        <inputEntry id="UnaryTests_00h9706">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0x181oj">
+          <text>33</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kgsepo">
+          <text>"Arrêté De Nomination"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0b91li1">
+          <text>"Arrêté De Nomination"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0zuonyl">
+          <text>"ARRNOM"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ftetx2">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sy5b4t">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0cz5sjo">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ktsz6f">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0ks9r00">
+        <inputEntry id="UnaryTests_0c3y8wm">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1didl3k">
+          <text>34</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ylyof3">
+          <text>"Carte professionnelle d'identité"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17j3ffm">
+          <text>"Carte professionnelle d'identité"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vucien">
+          <text>"CPROF"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0etk28q">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14ooe7u">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eu0pcw">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0vffe30">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mb3wdx">
+        <inputEntry id="UnaryTests_0t7yo15">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0fxxoo1">
+          <text>35</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yvr66z">
+          <text>"Reçu de versement"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kutt3e">
+          <text>"Le reçu de versement"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_189jihu">
+          <text>"VERSEMENT"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nbv1gb">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yv936g">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_112emzl">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0iaj2m1">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wa4guh">
+        <inputEntry id="UnaryTests_04nhsgr">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02kqh0l">
+          <text>36</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11q0hi9">
+          <text>"Attestation du conseil de l’ordre"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_020t1m0">
+          <text>"Une attestation du conseil de l’ordre"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10kj464">
+          <text>"ATTCO"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1yx8ks8">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1n9op4n">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18tzyoi">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ed5eoa">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_02zl7oy">
+        <inputEntry id="UnaryTests_0skkorb">
+          <text>"tous","personnes_morale_liquidateur"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_158m7kt">
+          <text>37</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0f1lbzl">
+          <text>"Ordonnance du tribunal"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ifbn0f">
+          <text>"Ordonnance du tribunal qui nomme le liquidateur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0v82xcd">
+          <text>"ORDTRI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0krwi9x">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06kb844">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h8hzev">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kftt1a">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qmq0ih">
+        <inputEntry id="UnaryTests_0x7aw96">
+          <text>"tous","personnes_morale_cabinet_architecture"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1oe5ebf">
+          <text>38</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ob2zik">
+          <text>"Attestation du conseil national de l’ordre des architectes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_108nju9">
+          <text>"Une attestation du conseil national de l’ordre des architectes"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p80mtw">
+          <text>"ATTCNOA"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mqsusd">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_11nftri">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15yyol7">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_153h20z">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1wkg95b">
+        <inputEntry id="UnaryTests_1df6ojl">
+          <text>"tous","personnes_morale_cliniques"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15duagh">
+          <text>39</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1prubqt">
+          <text>"Agrément ou arrêté portant licence d’exploitation de la clinique"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_10oymvf">
+          <text>"Agrément ou arrêté portant licence d’exploitation de la clinique"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wyu0b0">
+          <text>"AGRCLIN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1i39bfl">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0khezv6">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0m43wd9">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05chduk">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_06wls3n">
+        <inputEntry id="UnaryTests_01pcg89">
+          <text>"tous","personnes_morale_pharmacie"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0r4y73m">
+          <text>40</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_17u7q38">
+          <text>"Arrêté portant licence d’exploitation d’officine de pharmacie"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fd41tz">
+          <text>"Arrêté portant licence d’exploitation d’officine de pharmacie"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_077m2mm">
+          <text>"AGREPHARM"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0uedhdp">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ack66s">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0p5vpxg">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g1wvmm">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0wqobbz">
+        <inputEntry id="UnaryTests_13btm5e">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1pri19m">
+          <text>41</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14oa51y">
+          <text>"Acte de désignation du ou des administrateurs"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_19q3n8h">
+          <text>"Acte de désignation du ou des administrateurs (ou gérants) lorsqu’ils n’ont pas été nommés dans les statuts"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0w2gqsr">
+          <text>"ACTDESIGN"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wsuy9a">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1b1bywv">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0l1spjq">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05oe7ep">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_08q91ht">
+        <inputEntry id="UnaryTests_0pk4j5n">
+          <text>"tous","personnes_physiques_cc","personnes_physiques_ce","personnes_physiques_commercants_cc","personnes_physiques_retraites_cc","personnes_physiques_corps_cc","personnes_physiques_prive_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1272am8">
+          <text>42</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mgz0es">
+          <text>"Photos d’identité"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_05a23eg">
+          <text>"photos d’identité du demandeur, du mineur , des mandataires , des signataire etc..."</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ieawpp">
+          <text>"PHOTO"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0dsk994">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wuqzg2">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1nwyri3">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fi15u1">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_11ir73r">
+        <inputEntry id="UnaryTests_187bksh">
+          <text>"tous","id_card_verso"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_19py3c2">
+          <text>43</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0km78aw">
+          <text>"Pièce d'identité (Verso)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_021oqzs">
+          <text>"Une copie de la pièce d'identité (CNI, PERMIS DE CONDUIRE, ...)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0mdmq1r">
+          <text>"CNI_B"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07sdues">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o9do2f">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ckeyu3">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yyy89f">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0y7wi0e">
+        <inputEntry id="UnaryTests_0tapxhg">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1q0ugqx">
+          <text>44</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06bci7c">
+          <text>"Déclaration sur l’honneur signée du gérant"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lw510i">
+          <text>"Une déclaration sur l’honneur signée du gérant dans lequel il déclarera n’avoir été l’objet d’aucune condamnation pénale ni de sanction civile ou administrative de nature à l’interdire de gérer, administrer ou contrôler une personne morale ou d’exercer une activité commerciale"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0xn7rym">
+          <text>"DECLSI"c</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fbwd94">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_03ru83h">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0a22y5f">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06ie76r">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ytywwv">
+        <inputEntry id="UnaryTests_1ezq158">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_02axk6c">
+          <text>45</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0st7ia1">
+          <text>"Liste des dirigeants"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ill44f">
+          <text>"Un exemplaire de la liste certifiée conforme du ou des dirigeants de la succursale"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o6v0an">
+          <text>"DIRIG"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hf9eu4">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_112u79i">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g65ip2">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1u4ul6t">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1ez5lgw">
+        <inputEntry id="UnaryTests_1s0tj4q">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06yw7s0">
+          <text>46</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lw1k34">
+          <text>"Acte de nomination de l’ambassade ou du représentant"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mc6w7f">
+          <text>"Acte de nomination de l’ambassade ou du représentant/le décret"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18k4qpk">
+          <text>"ACTNOMI"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_002lg3s">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1x3rb9g">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1lnhd6k">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ufu4g3">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1f5iove">
+        <inputEntry id="UnaryTests_1qx15td">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1ydd4up">
+          <text>47</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xkvx8j">
+          <text>"Autorisation de change"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u3sxl1">
+          <text>"Autorisation de change du Ministère de l’Economie et des Finances ou de la BCEAO"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0sy8fui">
+          <text>"AUTOCHANGE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1g0tdaw">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1eqxqay">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1jbzl5k">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_18mrwzj">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1qmc0h7">
+        <inputEntry id="UnaryTests_185ex5i">
+          <text>"tous"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ci5jwa">
+          <text>48</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r0o2ek">
+          <text>"Lettre d’accréditation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nh78el">
+          <text>"Lettre d’accréditation du Ministère des Affaires Etrangères"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1t4s89p">
+          <text>"LETRACRED"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1a42smx">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0nkw9u3">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1idgrid">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ptwndp">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0s2d4nv">
+        <inputEntry id="UnaryTests_13y3f3a">
+          <text>"tous","personnes_physiques_retraites_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_11ergey">
+          <text>49</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yfo5xw">
+          <text>"bulletin de pension"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lbhoup">
+          <text>"Un bulletin de pension de retraite pour les retraités"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ea90xj">
+          <text>"PAYPRETR"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dmwhc7">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ql4eo1">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1dakspm">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0lv4e1r">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1i6j860">
+        <inputEntry id="UnaryTests_0is3kkq">
+          <text>"tous","personnes_physiques_commercants_cc"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jdwvcs">
+          <text>50</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_04mnqz4">
+          <text>"Copie du registre de commerce et du crédit mobilier (RCCM)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0fb29oi">
+          <text>"Une copie du registre de commerce et du crédit mobilier (RCCM) pour les commerçants, de préférence le P0, P2 ou P2 bis"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_06cj7on">
+          <text>"RCCM"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_02epe5d">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0n61wbi">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_013u1ed">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1beetmj">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0hc00pj">
+        <inputEntry id="UnaryTests_082ktam">
+          <text>"tous","personnes_physiques_cc","personnes_physiques_ce","personnes_physiques_commercants_cc","personnes_physiques_retraites_cc","personnes_physiques_corps_cc","personnes_physiques_prive_cc","personnes_morale"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jg2chy">
+          <text>51</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_14jxs8l">
+          <text>"Justificatif de résidence"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kckqg0">
+          <text>"Un certificat de résidence OU une quittance SODECI, CIE ou CI TELECOM portant le nom du demandeur"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00alynq">
+          <text>"JRESIDE"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1380o7s">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0yune6b">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_140kjic">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1r080x4">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x8swba">
+        <inputEntry id="UnaryTests_1x2gzwh">
+          <text>"tous","personnes_morale_association_civil"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_05mr436">
+          <text>52</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i8sf9e">
+          <text>"Décret ou arrêté"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0i1ozgv">
+          <text>"Décret ou arrêté"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1c4bq2z">
+          <text>"DECRET"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0axd3zl">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00e99av">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0c59ijb">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0o9h2al">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1jil8v4">
+        <inputEntry id="UnaryTests_08f0swb">
+          <text>"tous","personne_etrangere"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_15l89dm">
+          <text>53</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0klhd3m">
+          <text>"Carte consulaire"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_00ffbls">
+          <text>"Carte consulaire"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1tdqxka">
+          <text>"CCONSUL"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1z0p1nc">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wxqbgl">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ybfxsg">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0z4eme1">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1cptusv">
+        <inputEntry id="UnaryTests_0pcul9f">
+          <text>"tous","personnes_physiques_conjoint"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_09d95y7">
+          <text>54</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0rthija">
+          <text>"Pièce d'identité du conjoint (Recto)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0kyzs2v">
+          <text>"Une copie de la pièce d'identité du conjoint (CNI, PASSEPORT, ...)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0oh8tt8">
+          <text>"CNI_CR"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_053fzca">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1wcak0u">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hxb9wv">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0ttfcao">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1v0bwvj">
+        <inputEntry id="UnaryTests_07wzj3a">
+          <text>"tous","personnes_physiques_conjoint"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_069exme">
+          <text>55</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_07wkr7w">
+          <text>"Photos d’identité du conjoint"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1mwranu">
+          <text>"Photos d’identité du conjoint"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0u89d7d">
+          <text>"PHOTO_C"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1p2fdy5">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1xv4lsg">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1gk8o5u">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_130la33">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1x1diet">
+        <inputEntry id="UnaryTests_1090sao">
+          <text>"tous","id_card_verso_conjoint"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_06nr1tb">
+          <text>56</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1hmy3uv">
+          <text>"Pièce d'identité du conjoint (Verso)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1fa75c0">
+          <text>"Pièce d'identité du conjoint (Verso)"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0g3vi6a">
+          <text>"CNI_CV"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1ovk4c6">
+          <text>2</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_011hkun">
+          <text>"confirmation"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1uunuf0">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0r8dzty">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0272v6s">
+        <inputEntry id="UnaryTests_06anhe5">
+          <text>"tous","personnes_physiques_conjoint"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0sevizs">
+          <text>57</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0moujpf">
+          <text>"Justificatif de résidence du conjoint"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0k606tq">
+          <text>"Un certificat de résidence OU une quittance SODECI, CIE ou CI TELECOM portant le nom du conjoint"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_15faui1">
+          <text>"JRESIDE_C"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_16xawx6">
+          <text>1</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_01sley0">
+          <text>"schema"</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1vs6cfk">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_09vv9he">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="listDocumentForNewAccount">
+        <dc:Bounds height="80" width="180" x="160" y="100" />
+      </dmndi:DMNShape>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>

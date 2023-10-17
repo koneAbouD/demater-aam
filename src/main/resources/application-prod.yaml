@@ -1,0 +1,40 @@
+app:
+  process-engine:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/camundadmdb
+      username: loanfile
+      password: loanfile
+      driver-class-name: org.postgresql.Driver
+  dm-file:
+    datasource:
+      url: jdbc:postgresql://localhost:5432/dmdb
+      username: loanfile
+      password: loanfile
+      driver-class-name: org.postgresql.Driver
+  file-storage:
+    template-base-path: C:\\DEMATER\\AppDM\\Contrat_Templates\\
+    datasource:
+      url: jdbc:postgresql://localhost:5432/dmfiledb
+      username: loanfile
+      password: loanfile
+      driver-class-name: org.postgresql.Driver
+  configuration:
+    uploadBasePath: C:\DEMATER\AppDM
+
+keycloak:
+  realm: BDU
+  resource: lam-front
+#  resource: ouverture_compte
+#  auth-server-url: http://10.80.1.111:9090/auth
+  auth-server-url: http://10.80.1.113:9090/auth
+  ssl-required: none #external
+  confidential-port: 0
+  public-client: false
+  cors: true
+  #enabled : false
+  #bearer-only: true
+  credentials:
+    secret: b4a49f80-4acc-40d2-b23f-b1935d92732c
+
+amplitude:
+  soap-path: file:C:\DEMATER\AppDM\Amplitude\

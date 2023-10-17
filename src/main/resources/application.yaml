@@ -1,0 +1,69 @@
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: INFO #DEBUG
+server:
+  compression:
+    enabled: true
+  port: 8083
+
+#onboarding:
+#  server_url: http://51.144.3.143:8080 #Online => 51.144.3.143 | Local => 172.16.1.146
+#  get_all_file_url: http://52.144.3.143:8080/api/account/getter
+#  get_file_uploaded_url: http://51.144.3.143:8080/loan/docs/streaming
+#  update_businesskey_url: http://51.144.3.143:8080/api/account/uuid/update
+#  get_docs_url: http://51.144.3.143:8080/api/account/docs/getter
+#  update_state_file_url: http://51.144.3.143:8080/api/account/state/update
+#  add_doc_url: http://51.144.3.143:8080/api/docs/create
+#  default_agence: /EXTERNE
+#  default_user: serverTask
+
+  configuration:
+    rabbitMqExchange: process_data_exchange.topic
+    uploadProvider: local
+    defaultUploadExtension: pdf
+    hostUrOfDmInitiate: http://localhost:8989
+    hostUrOfVerifyCredit: http://localhost:8989
+    docCodeUrl: https://4mvizlzaw0.execute-api.eu-west-1.amazonaws.com/v1/background/documentslist
+    startProcessOnFileCreation: true
+    roleWhoCanUpdateDmFile: admin
+    selfProcessKey: DmInitiateProcess
+    selfProcessQueue: DmInitiateProcess.queue
+    selfProcessQueueRoutingKey: DmInitiateProcess.queue.key
+    historyQueue: process-history.queue
+    historQueueRoutingKeys: process-history.queue.key
+    mainQueue: DmInitiateProcess.queue
+    file-storage: DB # DB (Database) FS(File System)
+
+onboarding: # http://13.80.245.219 => http://boxbanking-mobile.westeurope.cloudapp.azure.com
+  server_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php #Online => 52.166.206.235 | Local => 172.16.1.146
+  get_all_file_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/account/getter
+  get_file_uploaded_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/loan/docs/streaming
+  update_businesskey_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/account/uuid/update
+  get_docs_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/account/docs/getter
+  update_state_file_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/account/state/update
+  add_doc_url: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/docs/create
+
+  add_doc_for_sign: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/upload/sign/files
+  get_sign_doc: https://boxbanking-mobile.westeurope.cloudapp.azure.com/index.php/api/read/sign/files
+  default_agence: /EXTERNE
+  default_user: serverTask
+
+spring-servlet-multipart-enabled: true
+spring:
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+
+spring.profiles.active: @spring.profiles.active@
+
+#  Route::get('/api/account/getter', 'ApiController@getAllAccount');
+#  Route::put('/api/account/uuid/update', 'ApiController@updateUuidAccount');
+#  Route::put('/api/account/state/update', 'ApiController@updateStateAccount');
+#  Route::post('/api/account/docs/getter', 'ApiController@docAccountGetter');
+#dataspike.api-token: FY0eLVkpyXhMTSXpAhBCDay/76e8XpMYlPwHeMSdAZO3BuxNs2xQeZ9IZu9C0UEz0BVRR09Wpa89FiuXTj/5RA==
+dataspike.api-token: O6U0BRWMU1HmgLZvkp4hVxoKtsUFSPR+AmzvDaCwJxmrRDyF/7cr/VOmdEBdfEnt0rSUfkZT8/EUQlVWdKux5g==
+#regular.license: AAEAAFxrOKDbZWV9CemgsSP+W2AiaiLCIfWrGNfmM++ttER8BWL4JhSodrjLvHPZb9L/eqh4p1b4Xgyx27+iNxKHyR9AeLNgOHPvUSwTcIIDKrwlh4AXSgFKFPLuW0ag+4EDsqj7s6ynCLG/5Y/xuIaKHR9IZhOuvOfxMETXoSY6uTEUOwab1d0zC6bIGUYAyax2JRBpt9aWfkJh6DStbEV+89BOysqN2twhHlAycVl6IFMSps/QYpalPxjaedtR+Tu96DVT3z0Za82zlwC2OpMMj4ECkQk+3MNMbmyacyhTkSXCZJRICmYndDS4kp6rkv0l+H+jXwfPuNOwScxujJ2mNQLkAAAAAAAAEEueOd6fYQEQ+G2yoQ8czojmjwa+GEvgbmxXv8yCUm5WqW7WMsA/b6lSluu2jZ7hsi1B0SkYj+vP5DrDp+ZcTiJ8C3B70fBi4SWMX8uOhrCdbdHSrUWEM2ZX94hkeSyR6MUk4weSg1GwaCifH8lbBPUZVCCvtsHDUdbPBeX+I7VkALKcq5zx3SVQhTClRZ+uyzT46GacaEkOynIZKO3i5E53xtf+KKh8n6/g5D7cwu+um7d/urPXDVx6UNHse0TGksvYUiWcYDdfjrwrLvW+8eErIjcxeL5ybo9WcCFaj084
+regular.license: AAEAAF2ABTLmMpPAnOBg/kFZSb/I8zJefLrckh23lS6jUyEC3Mr6K7vMxLNKVrD4z5fiyvQEnw0aYo6TLylpuv30lpwXc7YGrfpKE5VJB3jKv9ud4++UM4OXtNzy4Ej61ATt5oYxpKbZg/7xivGJoQk7tFZ7Bhfg7wYG3V/WO+fbqKJgZQKuOUpH5u1cnobsoc4oaixnzXliO7KZSmoEXCwUCtztVGQIN2tHjQM8MO5ItlaoaFqM4U9a8/77KxDNWKy/1b9F2z5a8CoQLCM8lH1DClvnntGN9O78zP0w8VNC+7VtMRzz3jk/rlzPX+HpSJJ1sY4M66ZpN/ZeJcscxy5PUfLkAAAAAAAAELp8aLkcdCAsi2kvEHZVnQcy49IMvqj60zjrSt6mANnOT0PXHX8/0irpywMAFNmO+0tsMYuaaasScnFX4SdfrTYL0Jm3kta1+VYyVg2K8STZNEc8bHp95M3GUed/ZvVtjwRU6RArcVEoVbh/+TmPwqYQ8UFrVsNv+ZOB8Kx+1hrchiYG9trHaxM2LdwHt3dtB6oVZmCt0UULBLXnFNlFno4dscpJQyE3HsAO6XN0FaoQLAkb6GQfusJl85ZlrGMJLLPAU643MNtN7q7l/87WlDlPKX/3tZRkphC9u0ltpb0b

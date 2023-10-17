@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>DOSSIER d'ouverture de compte</title>
+</head>
+<body>
+<!--    <p th:text="#{dossier.number(${dossierNumber})}">Le dossier XXXX est en attente de validation de votre art</p>-->
+<!--    <p th:text="#{dossier.customer-charge(${customerCharge},${completedDate})}">Il a été complété par AAAAAAAAAAAAAAAA le dd/MM/yyyy</p>-->
+<!--    <p >-->
+<!--        <span th:text="#{validate.dossier.text}"> Pour vérifier et valider le dossier veuillez suivre le lien</span>-->
+<!--        <a href="" th:href="@{${url}}">ICI</a>-->
+<!--    </p>-->
+<!--    <p th:text="#{email.end}">Cordialement</p>-->
+    <p>Bonjour,</p>
+    <p>Le dossier <strong>N° <span th:text="${dossierNumber}">XXXXXXX</span></strong> est en attente de vérification et  validation de votre part.</p>
+    <p>Il a été soumis par <span th:text="${customerCharge}">AAAAA</span> le <span th:text="${completedDate}"></span>.</p>
+    <p >
+        <span> Pour vérifier et valider le dossier veuillez suivre le lien</span>
+        <a href="" th:href="@{${url}}" th:text="${url}">CLIQUEZ ICI</a>
+    </p>
+    <p>BOX AFRICA BANK,</p>
+</body>
+</html>

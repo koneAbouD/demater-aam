@@ -1,0 +1,12 @@
+mail:
+  server:
+    host: smtp.office365.com
+    port: 587 #465
+    username: dkouakou@box.africa
+    password: 0uti$f3dx
+    protocol: smtp #smtps
+  debug: true
+  properties.mail.smtp:
+    starttls.enable: fase #true
+    starttls.required: true #true
+    ssl.enable: false #true

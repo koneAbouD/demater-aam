@@ -1,0 +1,653 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="createAccount" targetNamespace="http://soprabanking.com/amplitude" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:fjs="http://soprabanking.com/amplitude" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://soprabanking.com/amplitude" xmlns:s1="http://soprabanking.com/amplitude">
+      <xsd:simpleType name="charMax50">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="50"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax10">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="10"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char3">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax30">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="30"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="language">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" type="s1:char3"/>
+          <xsd:element minOccurs="0" name="designation" type="s1:charMax30"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="responseHeader">
+        <xsd:sequence>
+          <xsd:element name="requestId" type="s1:charMax50"/>
+          <xsd:element name="responseId" type="s1:charMax50"/>
+          <xsd:element type="xsd:dateTime" name="timestamp"/>
+          <xsd:element name="serviceVersion" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="language" type="s1:language"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="statusCodeType">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="-1"/>
+          <xsd:enumeration value="0"/>
+          <xsd:enumeration value="1"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="responseMessageNature">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="ERROR"/>
+          <xsd:enumeration value="INFO"/>
+          <xsd:enumeration value="WARNING"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char6">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="errorInformation">
+        <xsd:sequence>
+          <xsd:element type="xsd:string" name="errorCode" minOccurs="0"/>
+          <xsd:element type="xsd:string" name="convertedCode" minOccurs="0"/>
+          <xsd:element type="xsd:string" name="errorMessage" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="responseStatusMessage">
+        <xsd:sequence>
+          <xsd:element name="nature" type="s1:responseMessageNature"/>
+          <xsd:element name="code" type="s1:char6"/>
+          <xsd:element type="xsd:string" name="line" maxOccurs="unbounded" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="errorInformation" type="s1:errorInformation"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="responseStatusMessages">
+        <xsd:sequence>
+          <xsd:element name="message" type="s1:responseStatusMessage" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="responseStatus">
+        <xsd:sequence>
+          <xsd:element name="statusCode" type="s1:statusCodeType"/>
+          <xsd:element minOccurs="0" name="messages" type="s1:responseStatusMessages"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="errorResponseFlow">
+        <xsd:sequence>
+          <xsd:element name="responseHeader" type="s1:responseHeader"/>
+          <xsd:element name="responseStatus" type="s1:responseStatus"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="errorResponseFlow" type="s1:errorResponseFlow"/>
+      <xsd:complexType name="getStatusRequestFlow">
+        <xsd:sequence>
+          <xsd:element type="xsd:string" name="getStatusRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getStatusRequestFlow" type="s1:getStatusRequestFlow"/>
+      <xsd:complexType name="getStatusResponse">
+        <xsd:sequence>
+          <xsd:element type="xsd:dateTime" name="timeStamp"/>
+          <xsd:element name="serviceName" type="s1:charMax50"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getStatusResponseFlow">
+        <xsd:sequence>
+          <xsd:element name="getStatusResponse" type="s1:getStatusResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getStatusResponseFlow" type="s1:getStatusResponseFlow"/>
+      <xsd:simpleType name="languageCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="channelCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="0"/>
+          <xsd:maxLength value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="requestHeader">
+        <xsd:sequence>
+          <xsd:element name="requestId" type="s1:charMax50"/>
+          <xsd:element name="serviceName" type="s1:charMax50"/>
+          <xsd:element type="xsd:dateTime" name="timestamp"/>
+          <xsd:element minOccurs="0" name="originalName" type="s1:charMax50"/>
+          <xsd:element minOccurs="0" name="originalId" type="s1:charMax50"/>
+          <xsd:element type="xsd:dateTime" name="originalTimestamp" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="languageCode" type="s1:languageCode"/>
+          <xsd:element name="userCode" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="channelCode" type="s1:channelCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="fileaccountNature">
+        <xsd:sequence>
+          <xsd:element name="moduleCode" type="s1:char3"/>
+          <xsd:element name="accountNature" type="s1:char3"/>
+          <xsd:element minOccurs="0" name="fileType" type="s1:char3"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="productCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="packageCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="6"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountproduct">
+        <xsd:sequence>
+          <xsd:element name="productCode" type="s1:productCode"/>
+          <xsd:element minOccurs="0" name="packageCode" type="s1:packageCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="accountClassCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="10"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax3">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="customerCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="15"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax2">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="2"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="accountSide">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="1"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="I"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="accountSubjectToInterestCalculation">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="N"/>
+          <xsd:enumeration value="O"/>
+          <xsd:enumeration value="R"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="periodicity">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="A"/>
+          <xsd:enumeration value="M"/>
+          <xsd:enumeration value="S"/>
+          <xsd:enumeration value="T"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="codeForInterestLadderPrinting">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="D"/>
+          <xsd:enumeration value="N"/>
+          <xsd:enumeration value="S"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal1_0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="1"/>
+          <xsd:fractionDigits value="0"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax4">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="4"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char1">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="1"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal12_0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="12"/>
+          <xsd:fractionDigits value="0"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="matchingCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="0"/>
+          <xsd:enumeration value="1"/>
+          <xsd:enumeration value="2"/>
+          <xsd:enumeration value="3"/>
+          <xsd:enumeration value="9"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal4_0">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="4"/>
+          <xsd:fractionDigits value="0"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="chequeBookDeliveryMethod">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="B"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="R"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="branchCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="5"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="char5">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="5"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="currencyCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax11">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="11"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="internalAccountKey">
+        <xsd:sequence>
+          <xsd:element name="branch" type="s1:char5"/>
+          <xsd:element name="currency" type="s1:currencyCode"/>
+          <xsd:element name="account" type="s1:charMax11"/>
+          <xsd:element minOccurs="0" name="suffix" type="s1:charMax2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountPhoneNumberIdentifier">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountIdentifier" type="s1:internalAccountKey"/>
+          <xsd:element name="phoneType" type="s1:charMax3"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="charMax20">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="20"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountPhoneNumber">
+        <xsd:sequence>
+          <xsd:element name="identifier" type="s1:accountPhoneNumberIdentifier"/>
+          <xsd:element name="phoneNumber" type="s1:charMax20"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountPhoneNumbers">
+        <xsd:sequence>
+          <xsd:element name="accountPhoneNumber" type="s1:accountPhoneNumber" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountEmailAddressIdentifier">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountIdentifier" type="s1:internalAccountKey"/>
+          <xsd:element name="emailType" type="s1:charMax3"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountEmailAddress">
+        <xsd:sequence>
+          <xsd:element name="identifier" type="s1:accountEmailAddressIdentifier"/>
+          <xsd:element name="emailAddress" type="s1:charMax50"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountEmailAddresses">
+        <xsd:sequence>
+          <xsd:element name="accountEmailAddress" type="s1:accountEmailAddress" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="charMax36">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="36"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountContact">
+        <xsd:sequence>
+          <xsd:element name="name" type="s1:charMax36"/>
+          <xsd:element minOccurs="0" name="firstName" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="phoneNumber" type="s1:charMax20"/>
+          <xsd:element minOccurs="0" name="emailAddress" type="s1:charMax50"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="modifyAccountContactsRequest">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountIdentifier" type="s1:internalAccountKey"/>
+          <xsd:element name="accountContact" type="s1:accountContact" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="charMax40">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="40"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="decimal22_7">
+        <xsd:restriction base="xsd:decimal">
+          <xsd:totalDigits value="22"/>
+          <xsd:fractionDigits value="7"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="additionalDataValue">
+        <xsd:choice>
+          <xsd:element minOccurs="0" name="alphanumeric" type="s1:charMax40"/>
+          <xsd:element minOccurs="0" name="amountOrRate" type="s1:decimal22_7"/>
+          <xsd:element type="xsd:date" name="date" minOccurs="0"/>
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="additionalData">
+        <xsd:sequence>
+          <xsd:element name="identifier" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="value" type="s1:additionalDataValue"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountFreeAttribute">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountIdentifier" type="s1:internalAccountKey"/>
+          <xsd:element name="additionalData" type="s1:additionalData"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountFreeAttributes">
+        <xsd:sequence>
+          <xsd:element name="accountFreeAttribute" type="s1:accountFreeAttribute" maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="accountAddressType">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="2"/>
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="CH"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountAddressIdentifier">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountIdentifier" type="s1:internalAccountKey"/>
+          <xsd:element name="addressType" type="s1:accountAddressType"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="accountAddressFormat">
+        <xsd:restriction base="xsd:string">
+          <xsd:length value="2"/>
+          <xsd:enumeration value="BP"/>
+          <xsd:enumeration value="CA"/>
+          <xsd:enumeration value="CX"/>
+          <xsd:enumeration value="EM"/>
+          <xsd:enumeration value="GE"/>
+          <xsd:enumeration value="GU"/>
+          <xsd:enumeration value="SE"/>
+          <xsd:enumeration value="SP"/>
+          <xsd:enumeration value="TR"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="countryCode">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="3"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:simpleType name="charMax9">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="9"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountAddress">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="languageCode" type="s1:languageCode"/>
+          <xsd:element name="addressFormat" type="s1:accountAddressFormat"/>
+          <xsd:element minOccurs="0" name="addressLine1" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="addressLine2" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="addressLine3" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="city" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="postalCode" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="deliveryOffice" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="postalBox" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="postalSector" type="s1:charMax10"/>
+          <xsd:element minOccurs="0" name="postalSectorDesignation" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="countryCode" type="s1:countryCode"/>
+          <xsd:element minOccurs="0" name="branchCode" type="s1:branchCode"/>
+          <xsd:element minOccurs="0" name="locker" type="s1:charMax9"/>
+          <xsd:element minOccurs="0" name="serviceCode" type="s1:charMax4"/>
+          <xsd:element minOccurs="0" name="transportTypeCode" type="s1:charMax3"/>
+          <xsd:element minOccurs="0" name="emailAddress" type="s1:charMax50"/>
+          <xsd:element minOccurs="0" name="geographicalDepartment" type="s1:charMax30"/>
+          <xsd:element minOccurs="0" name="county" type="s1:charMax50"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createAccountAddressRequest">
+        <xsd:sequence>
+          <xsd:element name="accountAddressIdentifier" type="s1:accountAddressIdentifier"/>
+          <xsd:element name="accountAddress" type="s1:accountAddress"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="accountExistingAddressToBeUsed">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="C"/>
+          <xsd:enumeration value="CC"/>
+          <xsd:enumeration value="D"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="accountUseAnExistingAddress">
+        <xsd:choice>
+          <xsd:element minOccurs="0" name="existingAddressToBeUsed" type="s1:accountExistingAddressToBeUsed"/>
+          <xsd:element minOccurs="0" name="codingAddressType" type="s1:charMax2"/>
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="accountChequeBookAddress">
+        <xsd:choice>
+          <xsd:element minOccurs="0" name="useAnExistingAddress" type="s1:accountUseAnExistingAddress"/>
+          <xsd:element minOccurs="0" name="otherAddress" type="s1:createAccountAddressRequest"/>
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="customerAccount">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="accountTitle" type="s1:charMax30"/>
+          <xsd:element name="productCode" type="s1:productCode"/>
+          <xsd:element name="accountClassCode" type="s1:accountClassCode"/>
+          <xsd:element name="accountType" type="s1:charMax3"/>
+          <xsd:element minOccurs="0" name="responsibleCustomer" type="s1:customerCode"/>
+          <xsd:element minOccurs="0" name="ncsConstruction" type="s1:charMax2"/>
+          <xsd:element minOccurs="0" name="accountSide" type="s1:accountSide"/>
+          <xsd:element type="xsd:boolean" name="taxableAccount" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="accountSubjectToInterestCalculation" type="s1:accountSubjectToInterestCalculation"/>
+          <xsd:element name="frequencyOfDebitInterestCalculation" type="s1:periodicity"/>
+          <xsd:element name="frequencyOfCreditInterestCalculation" type="s1:periodicity"/>
+          <xsd:element minOccurs="0" name="codeForInterestLadderPrinting" type="s1:codeForInterestLadderPrinting"/>
+          <xsd:element minOccurs="0" name="accountSubjectToDeductionAtSource" type="s1:decimal1_0"/>
+          <xsd:element type="xsd:date" name="maturityDate" minOccurs="0"/>
+          <xsd:element name="serviceCode" type="s1:charMax4"/>
+          <xsd:element name="accountStatementCode" type="s1:char1"/>
+          <xsd:element minOccurs="0" name="accountStatementDeliveryMethod" type="s1:char1"/>
+          <xsd:element minOccurs="0" name="directCreditCeiling" type="s1:decimal12_0"/>
+          <xsd:element minOccurs="0" name="matchingCode" type="s1:matchingCode"/>
+          <xsd:element type="xsd:boolean" name="accountPledging" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="thresholdForReorderingCheques" type="s1:decimal4_0"/>
+          <xsd:element minOccurs="0" name="defaultChequeBookType" type="s1:charMax2"/>
+          <xsd:element minOccurs="0" name="chequeDeliveryMethod" type="s1:chequeBookDeliveryMethod"/>
+          <xsd:element minOccurs="0" name="branchThatDeliveredTheChequeBook" type="s1:branchCode"/>
+          <xsd:element type="xsd:string" name="accountMemos" minOccurs="0"/>
+          <xsd:element minOccurs="0" name="accountPhoneNumbers" type="s1:accountPhoneNumbers"/>
+          <xsd:element minOccurs="0" name="accountEmailAddresses" type="s1:accountEmailAddresses"/>
+          <xsd:element minOccurs="0" name="accountContacts" type="s1:modifyAccountContactsRequest"/>
+          <xsd:element minOccurs="0" name="accountFreeAttributes" type="s1:accountFreeAttributes"/>
+          <xsd:element minOccurs="0" name="accountAddress" type="s1:createAccountAddressRequest"/>
+          <xsd:element minOccurs="0" name="chequeBookAddress" type="s1:accountChequeBookAddress"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountCreationType">
+        <xsd:choice>
+          <xsd:element minOccurs="0" name="file" type="s1:fileaccountNature"/>
+          <xsd:element minOccurs="0" name="product" type="s1:accountproduct"/>
+          <xsd:element minOccurs="0" name="customer" type="s1:customerAccount"/>
+        </xsd:choice>
+      </xsd:complexType>
+      <xsd:complexType name="createAccountRequest">
+        <xsd:sequence>
+          <xsd:element name="accountType" type="s1:accountCreationType"/>
+          <xsd:element name="branchCode" type="s1:branchCode"/>
+          <xsd:element name="currencyCode" type="s1:currencyCode"/>
+          <xsd:element name="customerCode" type="s1:customerCode"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createAccountRequestFlow">
+        <xsd:sequence>
+          <xsd:element name="requestHeader" type="s1:requestHeader"/>
+          <xsd:element name="createAccountRequest" type="s1:createAccountRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="createAccountRequestFlow" type="s1:createAccountRequestFlow"/>
+      <xsd:complexType name="branch">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="code" type="s1:char5"/>
+          <xsd:element minOccurs="0" name="designation" type="s1:charMax30"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="simpleCurrency">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="alphaCode" type="s1:char3"/>
+          <xsd:element minOccurs="0" name="numericCode" type="s1:char3"/>
+          <xsd:element minOccurs="0" name="designation" type="s1:charMax30"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="internalFormatAccountOurBranch">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="branch" type="s1:branch"/>
+          <xsd:element minOccurs="0" name="currency" type="s1:simpleCurrency"/>
+          <xsd:element minOccurs="0" name="account" type="s1:charMax11"/>
+          <xsd:element minOccurs="0" name="suffix" type="s1:charMax2"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:simpleType name="charMax34">
+        <xsd:restriction base="xsd:string">
+          <xsd:minLength value="1"/>
+          <xsd:maxLength value="34"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType name="ibanFormatAccount">
+        <xsd:sequence>
+          <xsd:element name="value" type="s1:charMax34"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="externalFormatAccount">
+        <xsd:sequence>
+          <xsd:element name="value" type="s1:charMax34"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="accountIdentifierOurBranch">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="internalFormatAccountOurBranch" type="s1:internalFormatAccountOurBranch"/>
+          <xsd:element minOccurs="0" name="ibanFormatAccount" type="s1:ibanFormatAccount"/>
+          <xsd:element minOccurs="0" name="externalFormatAccount" type="s1:externalFormatAccount"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="restrictedAccount">
+        <xsd:sequence>
+          <xsd:element name="identifier" type="s1:accountIdentifierOurBranch"/>
+          <xsd:element name="title" type="s1:charMax30"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createAccountResponse">
+        <xsd:sequence>
+          <xsd:element name="accountIdentifier" type="s1:restrictedAccount"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="createAccountResponseFlow">
+        <xsd:sequence>
+          <xsd:element name="responseHeader" type="s1:responseHeader"/>
+          <xsd:element name="responseStatus" type="s1:responseStatus"/>
+          <xsd:element minOccurs="0" name="createAccountResponse" type="s1:createAccountResponse"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="createAccountResponseFlow" type="s1:createAccountResponseFlow"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="errorResponseFlow">
+    <wsdl:part name="errorResponseFlow" element="fjs:errorResponseFlow"/>
+  </wsdl:message>
+  <wsdl:message name="getStatusIn">
+    <wsdl:part name="parameters" element="fjs:getStatusRequestFlow"/>
+  </wsdl:message>
+  <wsdl:message name="getStatusOut">
+    <wsdl:part name="parameters" element="fjs:getStatusResponseFlow"/>
+  </wsdl:message>
+  <wsdl:message name="createAccountIn">
+    <wsdl:part name="parameters" element="fjs:createAccountRequestFlow"/>
+  </wsdl:message>
+  <wsdl:message name="createAccountOut">
+    <wsdl:part name="parameters" element="fjs:createAccountResponseFlow"/>
+  </wsdl:message>
+  <wsdl:portType name="createAccountPortType">
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="fjs:getStatusIn" name="getStatusRequestFlow"/>
+      <wsdl:output message="fjs:getStatusOut" name="getStatusResponseFlow"/>
+      <wsdl:fault message="fjs:errorResponseFlow" name="errorResponseFlow"/>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <wsdl:input message="fjs:createAccountIn" name="createAccountRequestFlow"/>
+      <wsdl:output message="fjs:createAccountOut" name="createAccountResponseFlow"/>
+      <wsdl:fault message="fjs:errorResponseFlow" name="errorResponseFlow"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="createAccountBinding" type="fjs:createAccountPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="getStatus">
+      <soap:operation soapAction="getStatus"/>
+      <wsdl:input name="getStatusRequestFlow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getStatusResponseFlow">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="errorResponseFlow">
+        <soap:fault use="literal" name="errorResponseFlow"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="createAccount">
+      <soap:operation soapAction="createAccount"/>
+      <wsdl:input name="createAccountRequestFlow">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createAccountResponseFlow">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="errorResponseFlow">
+        <soap:fault use="literal" name="errorResponseFlow"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="createAccount">
+    <wsdl:port binding="fjs:createAccountBinding" name="createAccountPortType">
+      <soap:address location="https://10.80.1.77:18086/createAccount"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
