@@ -160,22 +160,22 @@ public class DmDecisionService {
                         }*/
 
 //Test interne box
-                        /*List<UserRepresentation> usersInGroup = customKeycloakService.getGroups().stream()
+                        List<UserRepresentation> usersInGroup = customKeycloakService.getGroups().stream()
                                 .filter(grp->{return grp.getName().equalsIgnoreCase(UserService.getConnectedUser().getAgence().trim().replace("/", ""));})
                                 .findFirst()
                                 .map(grp->{return customKeycloakService.getUsersOfGroup(grp.getId());})
-                                .orElse(new ArrayList<>());*/
+                                .orElse(new ArrayList<>());
 //  Preprod dbu
-                        List<UserRepresentation> usersInGroup = customKeycloakService.getGroupsKeycloak().stream()
+                        /*List<UserRepresentation> usersInGroup = customKeycloakService.getGroupsKeycloak().stream()
                                 .filter(grp->{return grp.getName().equalsIgnoreCase(UserService.getConnectedUser().getAgence().trim().replace("/", ""));})
                                 .findFirst()
                                 .map(grp->{return customKeycloakService.getUsersFromGroup(grp.getId());})
-                                .orElse(new ArrayList<>());
+                                .orElse(new ArrayList<>());*/
                         System.out.println("usersInGroup _______________ "+usersInGroup.size());
 //  Test interne box
-                        //List<UserRepresentation> usersInrole = customKeycloakService.getUsersOfRole(RolesConfig.Role_chef_agence);
+                        List<UserRepresentation> usersInrole = customKeycloakService.getUsersOfRole(RolesConfig.Role_chef_agence);
 //  Preprod dbu
-                        List<UserRepresentation> usersInrole = customKeycloakService.getUsersOfRoleKeycloak(RolesConfig.Role_chef_agence);
+                        //List<UserRepresentation> usersInrole = customKeycloakService.getUsersOfRoleKeycloak(RolesConfig.Role_chef_agence);
                         System.out.println("usersInrole _______________ "+usersInrole.size());
                         List<UserRepresentation> userRepresentations = usersInrole.stream()
                                 .filter(userRepresentation->{

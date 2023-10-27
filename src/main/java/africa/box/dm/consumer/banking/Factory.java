@@ -45,6 +45,12 @@ public class Factory {
     public static CustomerJointAccountListInfoBuilder aCustomerJointAccountList() {
         return Director.createJointAccountsListInfo();
     }
+    public static CustomerAddressesEmailCreateBuilder aCustomerAddresseEmailList() {
+        return Director.customerAddressesEmailCreateInfo();
+    }
+    public static CustomerAddressEmailRequestBuilder aCustomerAddressEmail() {
+        return Director.customerAddressEmailCreateInfo();
+    }
 
     /** Create Account Request Builder */
     public static class CreateAccountRequestBuilder {
@@ -495,15 +501,9 @@ public class Factory {
             return this;
         }
 
-        public CreateCustomerRequestBuilder emailAddresses(String type, String email) {
-            CustomerEmailAddressesCreate addressesCreate = new CustomerEmailAddressesCreate();
-            CreateCustomerEmailAddressRequest addressRequest = new CreateCustomerEmailAddressRequest();
-            EmailCreateIdentifier identifier = new EmailCreateIdentifier();
-            identifier.setType(type);
-            addressRequest.setIdentifier(identifier);
-            addressRequest.setEmail(email);
-            addressesCreate.getEmailAddress().add(addressRequest);
-            request.setEmailAdressesList(addressesCreate);
+        public CreateCustomerRequestBuilder emailAddresses (CustomerEmailAddressesCreate adressesList) {
+
+            request.setEmailAdressesList(adressesList);
             return this;
         }
 
@@ -889,6 +889,39 @@ public class Factory {
 
         public CustomerReportingAttributesCreate build() {
             return reportingAttributes;
+        }
+    }
+
+    public static class CustomerAddressesEmailCreateBuilder {
+        CustomerEmailAddressesCreate customerEmailAddressesCreate = new CustomerEmailAddressesCreate();
+
+        public CustomerAddressesEmailCreateBuilder addressList(List<CreateCustomerEmailAddressRequest> emailAddress) {
+
+            emailAddress.forEach(x -> emailAddress.add(x));
+            return this;
+        }
+
+        public CustomerEmailAddressesCreate build() {
+            return customerEmailAddressesCreate;
+        }
+
+    }
+    public static class CustomerAddressEmailRequestBuilder {
+        CreateCustomerEmailAddressRequest createCustomerEmailAddressRequest = new CreateCustomerEmailAddressRequest();
+
+        public CustomerAddressEmailRequestBuilder identifier(String value) {
+            EmailCreateIdentifier addressRequest = new EmailCreateIdentifier();
+            addressRequest.setType(value);
+            createCustomerEmailAddressRequest.setIdentifier(addressRequest);
+            return this;
+        }
+        public CustomerAddressEmailRequestBuilder email(String value) {
+            createCustomerEmailAddressRequest.setEmail(value);
+            return this;
+        }
+
+        public CreateCustomerEmailAddressRequest build() {
+            return createCustomerEmailAddressRequest;
         }
     }
 

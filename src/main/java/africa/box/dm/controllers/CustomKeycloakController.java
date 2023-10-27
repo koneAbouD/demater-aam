@@ -47,8 +47,8 @@ public class CustomKeycloakController {
     public List<GroupRepresentation> getGroups(){
         List<Map<String,String>> list = new ArrayList<>();
 
-        //List<GroupRepresentation> listGroupRepresentation = customKeycloakService.getGroups();
-        List<GroupRepresentation> listGroupRepresentation = customKeycloakService.getGroupsKeycloak();
+        List<GroupRepresentation> listGroupRepresentation = customKeycloakService.getGroups();
+        //List<GroupRepresentation> listGroupRepresentation = customKeycloakService.getGroupsKeycloak();
         for (GroupRepresentation g:listGroupRepresentation){
             Map<String,String> group = new HashMap<>();
             group.put("name",g.getName());

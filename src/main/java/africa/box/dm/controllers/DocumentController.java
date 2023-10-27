@@ -54,8 +54,7 @@ public class DocumentController {
     @Autowired
     private LogInfoService logInfoService;
 
-    private final String[] documentsToBeSigned =
-            {"KYC personne physique BDU-CI", "Formualire SMS et EBanking",
+    private final String[] documentsToBeSigned = {"KYC personne physique BDU-CI", "Formualire SMS et EBanking",
                     "Formulaire d'adhésion au service Monétique BDU-CI", "Demande Ouverture de compte",
                     "Convention BDU", "Carton de signature", "Demande de chequier", "Formulaire d'obtention de consentement"};
 

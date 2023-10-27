@@ -1,5 +1,4 @@
 INSERT INTO gestionnaire (id, name, code) VALUES
-    (nextval('gestionnaire_id_seq'), '', ''),
     (nextval('gestionnaire_id_seq'), 'KONATE LAROSSE NADEGE', '309'),
     (nextval('gestionnaire_id_seq'), 'TOURE MARIE ANGE', '313'),
     (nextval('gestionnaire_id_seq'), 'GUEYE DAMI CEDRIC JORDAN', '396'),

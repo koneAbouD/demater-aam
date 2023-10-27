@@ -38,8 +38,8 @@ public class CompteService {
     @Autowired
     MailService mailService;
 
-    @Autowired
-    private BankingBase bankingBase;
+   /* @Autowired
+    private BankingBase bankingBase;*/
 
 // Information sur le client
 // Information sur les Coordonnees du client
@@ -289,7 +289,7 @@ public class CompteService {
                 logger.info(compte.getConjoint().toString());
                 logger.info(compteAmplitudeConjoint.toString());
                 String customerCodeConjoint = "mock";
-                customerCodeConjoint = bankingBase.createCustomer(compteAmplitudeConjoint);
+                //customerCodeConjoint = bankingBase.createCustomer(compteAmplitudeConjoint);
                 conjoint.setCustomercode(customerCodeConjoint);
                 compte.setConjoint(conjoint);
                 compte.setCustomerCodeConjoint(customerCodeConjoint);
@@ -301,25 +301,25 @@ public class CompteService {
             logger.info(compteAmplitude.toString());
 
             String customerCode = "mock";
-            customerCode = bankingBase.createCustomer(compteAmplitude);
+            //customerCode = bankingBase.createCustomer(compteAmplitude);
 
             if (customerCode != null) {
 
-                CreateAccountResponseFlow response = bankingBase.createAccount(compteAmplitude, customerCode);
-                AccountIdentifierOurBranch identifier = response.getCreateAccountResponse().getAccountIdentifier().getIdentifier();
+                /*CreateAccountResponseFlow response = bankingBase.createAccount(compteAmplitude, customerCode);
+                AccountIdentifierOurBranch identifier = response.getCreateAccountResponse().getAccountIdentifier().getIdentifier();*/
                 ReleveIdentiteBancaire rib = new ReleveIdentiteBancaire();
                 rib.setCodeBank("CI180");
                 rib.setCustomerCode(customerCode);
                 rib.setDemandeur(compte.getNomDemandeur() + " " + compte.getPrenomDemandeur());
                 rib.setAdresse1(compte.getVille());
                 rib.setAdresse2(compte.getAdresse());
-                rib.setAccountCode(identifier.getInternalFormatAccountOurBranch().getAccount());
+                /*rib.setAccountCode(identifier.getInternalFormatAccountOurBranch().getAccount());
                 rib.setIban(identifier.getIbanFormatAccount().getValue());
                 rib.setBranch(identifier.getInternalFormatAccountOurBranch().getBranch().getDesignation());
                 rib.setBranchCode(identifier.getInternalFormatAccountOurBranch().getBranch().getCode());
-                rib.setDevise(identifier.getInternalFormatAccountOurBranch().getCurrency().getAlphaCode());
+                rib.setDevise(identifier.getInternalFormatAccountOurBranch().getCurrency().getAlphaCode());*/
                 rib.setBic("BDUTCIABXXX");
-                rib.setCleRib(StringUtils.right(identifier.getIbanFormatAccount().getValue(), 2));
+                //rib.setCleRib(StringUtils.right(identifier.getIbanFormatAccount().getValue(), 2));
 
                 compte.setCustomercode(customerCode);
 

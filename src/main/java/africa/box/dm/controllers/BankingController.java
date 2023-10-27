@@ -19,13 +19,13 @@ import java.util.Optional;
 @CrossOrigin(value = "*", origins = "*")
 public class BankingController {
 
-    @Autowired
-    private BankingBase bankingBase;
+    /*@Autowired
+    private BankingBase bankingBase;*/
     @Autowired
     private CompteService compteService;
     @PostMapping(path = "/{businessKey}/create-customer")
     public ResponseEntity<Object> createCustomer(@PathVariable String businessKey) throws ErrorResponseFlow_Exception, createaccountproxy.ErrorResponseFlow_Exception {
-        bankingBase.disableSSL();
+        //bankingBase.disableSSL();
         String customerCode = compteService.createCustomer(businessKey);
 
         Map<String, Object> response = new HashMap<>();

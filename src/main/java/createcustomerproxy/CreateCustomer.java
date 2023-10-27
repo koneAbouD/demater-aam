@@ -29,7 +29,7 @@ import javax.xml.ws.WebServiceFeature;
 // Preprod
 // file:C:\DEMATER\AppDM\PRE-PROD\BACK\Amplitude\createCustomer_1.wsdl
 
-@WebServiceClient(name = "createCustomer", targetNamespace = "http://soprabanking.com/amplitude", wsdlLocation = "file:C:\\DEMATER\\AppDM\\Amplitude\\createCustomer_1.wsdl")
+@WebServiceClient(name = "createCustomer", targetNamespace = "http://soprabanking.com/amplitude", wsdlLocation = "file:/home/admin/BDU_PROJECT/AAM/BACK/Amplitude/createCustomer_1.wsdl")
 public class CreateCustomer
     extends Service
 {
@@ -41,7 +41,7 @@ public class CreateCustomer
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("file:C:\\DEMATER\\AppDM\\Amplitude\\createCustomer_1.wsdl");
+            url = new URL("file:/home/admin/BDU_PROJECT/AAM/BACK/Amplitude/createCustomer_1.wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

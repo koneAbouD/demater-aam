@@ -198,7 +198,7 @@ public class BankingBase {
                             compteAmplitude.email,
                             compteAmplitude.codePaysResidence)
                     .phoneNumbers("002", compteAmplitude.mobile)
-                    .emailAddresses("001", compteAmplitude.email)
+                    .emailAddresses(compteAmplitude.email != null ? aCustomerAddresseEmailList().addressList(Arrays.asList(aCustomerAddressEmail().identifier("001").email(compteAmplitude.email).build())).build() : null)
                     .contacts("n/a", "n/a", "n/a", "na@na.fr")
                     .profile(compteAmplitude.codeProfil)
                     .idPapers(

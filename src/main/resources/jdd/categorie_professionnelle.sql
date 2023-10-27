@@ -1,6 +1,5 @@
 INSERT INTO categorie_professionnelle (id, code, name)
 VALUES
-    (nextval('categorie_professionnelle_id_seq'), '', ''),
     (nextval('categorie_professionnelle_id_seq'), 'ARC', 'ARCHITECTE'),
     (nextval('categorie_professionnelle_id_seq'), 'ART', 'ARTISAN'),
     (nextval('categorie_professionnelle_id_seq'), '999', 'PROF de la REPRISE'),

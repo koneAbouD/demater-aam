@@ -1,6 +1,5 @@
 INSERT INTO residence_declaration (id, code, name)
 VALUES
-    (nextval('residence_declaration_id_seq'), '', ''),
     (nextval('residence_declaration_id_seq'), '001', 'ETAT du déclarant'),
     (nextval('residence_declaration_id_seq'), '002', 'Autres états membres UEMOA'),
     (nextval('residence_declaration_id_seq'), '003', 'Residents UEMOA'),

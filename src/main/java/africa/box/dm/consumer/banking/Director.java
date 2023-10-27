@@ -45,5 +45,10 @@ public class Director {
     public static Factory.CustomerJointAccountListInfoBuilder createJointAccountsListInfo() {
         return new Factory.CustomerJointAccountListInfoBuilder();
     }
-
+    public static Factory.CustomerAddressesEmailCreateBuilder customerAddressesEmailCreateInfo() {
+        return new Factory.CustomerAddressesEmailCreateBuilder();
+    }
+    public static Factory.CustomerAddressEmailRequestBuilder customerAddressEmailCreateInfo() {
+        return new Factory.CustomerAddressEmailRequestBuilder();
+    }
 }
