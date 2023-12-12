@@ -1,7 +1,7 @@
 package com.demater.core.domain.gadget;
 
-import com.demater.core.domain.exception.InsufficientGadgetException;
-import com.demater.core.domain.exception.UnavailableGadgetException;
+import com.demater.core.exception.InsufficientGadgetException;
+import com.demater.core.exception.UnavailableGadgetException;
 import lombok.*;
 
 import java.util.UUID;

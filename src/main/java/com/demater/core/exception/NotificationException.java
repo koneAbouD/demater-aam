@@ -1,4 +1,4 @@
-package com.demater.core.domain.exception;
+package com.demater.core.exception;
 
 public class NotificationException extends RuntimeException {
     public NotificationException(String message, Throwable cause) {

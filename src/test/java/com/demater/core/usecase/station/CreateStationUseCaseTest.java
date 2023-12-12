@@ -2,7 +2,7 @@ package com.demater.core.usecase.station;
 
 import com.demater.builder.CityMB;
 import com.demater.builder.StationMB;
-import com.demater.core.domain.exception.CityNotFoundException;
+import com.demater.core.exception.CityNotFoundException;
 import com.demater.core.domain.referential.City;
 import com.demater.core.domain.station.Station;
 import com.demater.core.event.station.StationCreatingEvent;

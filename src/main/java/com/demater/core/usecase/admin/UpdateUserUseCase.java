@@ -28,11 +28,9 @@ public class UpdateUserUseCase {
     public User execute(String login, User user) {
         User userToUpdate = userRepository.findByEmailOrLogin(login)
                 .orElseThrow(() -> new UserNotFoundException("User [" + login + "] not exists"));
-        Set<Position> positions = positionRepository.findAllByCodeIn(user.codesPositions());
         Set<Role> roles = getUserRoles(user);
         userToUpdate.updateProfileWith(user.getFirstName(),
                 user.getLastName(),
-                positions,
                 roles,
                 user.isValid(),
                 user.isActivate());

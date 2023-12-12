@@ -91,13 +91,11 @@ public class UseCaseBeanConfiguration {
 
     @Bean
     public CreateUserUseCase getCreateUserUseCase(UserRepository userRepository,
-                                                  PositionRepository positionRepository,
                                                   RoleRepository roleRepository,
                                                   AuthEventPublisher authEventPublisher,
                                                   Password password,
                                                   Notification notification) {
         return new CreateUserUseCase(userRepository,
-                positionRepository,
                 roleRepository,
                 authEventPublisher,
                 password,

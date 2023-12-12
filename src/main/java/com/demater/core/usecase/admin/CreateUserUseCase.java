@@ -18,7 +18,6 @@ import static com.demater.core.domain.common.Constants.*;
 @RequiredArgsConstructor
 public class CreateUserUseCase {
     private final UserRepository userRepository;
-    private final PositionRepository positionRepository;
     private final RoleRepository roleRepository;
     private final AuthEventPublisher authEventPublisher;
     private final Password password;
@@ -37,17 +36,13 @@ public class CreateUserUseCase {
 
     private User registerUser(User user) {
         String passwordGenerated = password.generatePassword();
-        user.updateUserForCreatingWith(getPositions(user),
-                getUserRoles(user),
+        user.updateUserForCreatingWith(getUserRoles(user),
                 password.encode(passwordGenerated),
                 password.generateJwtToken(user.getLogin()),
                 passwordGenerated);
         return userRepository.save(user);
     }
 
-    private Set<Position> getPositions(User user) {
-        return positionRepository.findAllByCodeIn(user.codesPositions());
-    }
 
     private Set<Role> getUserRoles(User user) {
         if (user.getRoles().isEmpty()) {

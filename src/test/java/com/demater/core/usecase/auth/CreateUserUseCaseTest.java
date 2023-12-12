@@ -75,11 +75,8 @@ class CreateUserUseCaseTest {
     void should_throw_when_save_user_with_roles_is_empty() {
         // Given
         User user = new UserMB().withLogin("dsoumaila").withEmail("ss@gmail.com")
-                .withPositions(Set.of())
                 .withRoles(Set.of()).build();
-        when(user.codesPositions()).thenReturn(Set.of());
         when(userRepository.existsByEmailOrLogin(user.getEmail(), user.getLogin())).thenReturn(false);
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(Set.of());
 
         // When
         Exception exception = assertThrows(RoleNotFoundException.class, () -> createUserUseCase.execute(user));
@@ -87,7 +84,6 @@ class CreateUserUseCaseTest {
         // Then
         assertEquals(ROLES_ARE_NOT_FOUND, exception.getMessage());
         verify(userRepository).existsByEmailOrLogin(user.getEmail(), user.getLogin());
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
         verify(userRepository, never()).save(any(User.class));
         verify(authEventPublisher, never()).publishUserCreated(new UserCreatedEvent(any()));
     }
@@ -97,12 +93,9 @@ class CreateUserUseCaseTest {
         // Given
         Role role = new RoleMB().withName(ERole.ROLE_ADMIN).build();
         User user = new UserMB().withLogin("dsoumaila").withEmail("ss@gmail.com")
-                .withPositions(Set.of())
                 .withRoles(Set.of(role)).build();
-        when(user.codesPositions()).thenReturn(Set.of());
         when(user.hasRoleSuperAdminOrAdmin()).thenReturn(true);
         when(userRepository.existsByEmailOrLogin(user.getEmail(), user.getLogin())).thenReturn(false);
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(Set.of());
 
         // When
         Exception exception = assertThrows(AdminCreatingException.class, () -> createUserUseCase.execute(user));
@@ -110,37 +103,9 @@ class CreateUserUseCaseTest {
         // Then
         assertEquals(ADMIN_CREATING, exception.getMessage());
         verify(userRepository).existsByEmailOrLogin(user.getEmail(), user.getLogin());
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
         verify(userRepository, never()).save(any(User.class));
         verify(authEventPublisher, never()).publishUserCreated(new UserCreatedEvent(any()));
     }
 
-    @Test
-    void should_save_user() {
-        // Given
-        Role role = new RoleMB().withName(ROLE_USER).build();
-        User user = new UserMB().withLogin("dsoumaila").withEmail("ss@gmail.com").withPositions(Set.of()).withRoles(Set.of(role)).build();
-        when(user.codesPositions()).thenReturn(Set.of());
-        when(user.hasRoleSuperAdminOrAdmin()).thenReturn(false);
-        when(user.rolesNames()).thenReturn(Set.of(ROLE_USER));
-        when(userRepository.existsByEmailOrLogin(user.getEmail(), user.getLogin())).thenReturn(false);
-        String passwordGenerated = "14341vbWJ@!cbdscbwx";
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(Set.of());
-        when(roleRepository.findAllByNameIn(user.rolesNames())).thenReturn(Set.of(role));
-        when(password.generatePassword()).thenReturn(passwordGenerated);
-        when(userRepository.save(any(User.class))).thenReturn(user);
 
-        // When
-        createUserUseCase.execute(user);
-
-        // Then
-        verify(userRepository).existsByEmailOrLogin(user.getEmail(), user.getLogin());
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
-        verify(roleRepository).findAllByNameIn(user.rolesNames());
-        verify(password).generatePassword();
-        verify(password).encode(passwordGenerated);
-        verify(password).generateJwtToken(user.getLogin());
-        verify(userRepository).save(any(User.class));
-        verify(authEventPublisher).publishUserCreated(any());
-    }
 }

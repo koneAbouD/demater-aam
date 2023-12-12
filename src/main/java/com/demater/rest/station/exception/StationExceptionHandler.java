@@ -1,8 +1,8 @@
 package com.demater.rest.station.exception;
 
-import com.demater.core.domain.exception.CityNotFoundException;
-import com.demater.core.domain.exception.InsufficientGadgetException;
-import com.demater.core.domain.exception.UnavailableGadgetException;
+import com.demater.core.exception.CityNotFoundException;
+import com.demater.core.exception.InsufficientGadgetException;
+import com.demater.core.exception.UnavailableGadgetException;
 import com.demater.core.usecase.station.exception.StationAlreadyExistsException;
 import com.demater.core.usecase.station.exception.StationNotFoundException;
 import com.demater.rest.common.out.APIsOut;

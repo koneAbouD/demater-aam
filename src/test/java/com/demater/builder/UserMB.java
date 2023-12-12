@@ -46,10 +46,6 @@ public class UserMB {
         return this;
     }
 
-    public UserMB withPositions(Set<Position> positions) {
-        when(user.getPositions()).thenReturn(positions);
-        return this;
-    }
 
     public UserMB withActivate(boolean isActivate) {
         when(user.isActivate()).thenReturn(isActivate);

@@ -77,17 +77,14 @@ class UpdateUserUseCaseTest {
         String firstName = "aaaaa";
         String lastName = "bbbbb";
         User user = new UserMB().withLogin(login).withFirstName(firstName).withLastName(lastName).build();
-        when(user.codesPositions()).thenReturn(emptySet());
         User userExisting = new UserMB().withLogin(login).withFirstName(firstName).withLastName(lastName).build();
         when(userRepository.findByEmailOrLogin(user.getLogin())).thenReturn(of(userExisting));
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(emptySet());
 
         // When
         Exception exception = assertThrows(RoleNotFoundException.class, () -> updateUserUseCase.execute(login, userExisting));
 
         // Then
         assertEquals(ROLES_ARE_NOT_FOUND, exception.getMessage());
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
         verify(userRepository).findByEmailOrLogin(login);
         verify(userRepository, never()).save(any(User.class));
         verify(userEventPublisher, never()).publishUserDeleting(new UserDeletingEvent(login));
@@ -102,20 +99,17 @@ class UpdateUserUseCaseTest {
         Role role = new RoleMB().withName(ROLE_SUPER_ADMIN).build();
         User user = new UserMB().withLogin(login).withFirstName(firstName)
                 .withLastName(lastName).withRoles(Set.of(role)).build();
-        when(user.codesPositions()).thenReturn(emptySet());
         when(user.hasRoleSuperAdmin()).thenReturn(true);
         Role roleExisting = new RoleMB().withName(ROLE_SUPER_ADMIN).build();
         User userExisting = new UserMB().withLogin(login).withFirstName(firstName)
                 .withLastName(lastName).withRoles(Set.of(roleExisting)).build();
         when(userRepository.findByEmailOrLogin(user.getLogin())).thenReturn(of(userExisting));
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(emptySet());
 
         // When
         Exception exception = assertThrows(AdminCreatingException.class, () -> updateUserUseCase.execute(login, user));
 
         // Then
         assertEquals(SUPER_ADMIN_CREATING, exception.getMessage());
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
         verify(userRepository).findByEmailOrLogin(login);
         verify(userRepository, never()).save(any(User.class));
         verify(userEventPublisher, never()).publishUserUpdatingByAdmin(new UserUpdatingByAdminEvent(login));
@@ -130,14 +124,12 @@ class UpdateUserUseCaseTest {
         Role role = new RoleMB().withName(ROLE_ADMIN).build();
         User user = new UserMB().withLogin(login).withFirstName(firstName)
                 .withLastName(lastName).withRoles(Set.of(role)).withActivate(true).build();
-        when(user.codesPositions()).thenReturn(emptySet());
         when(user.hasRoleSuperAdmin()).thenReturn(false);
         when(user.rolesNames()).thenReturn(Set.of(ROLE_ADMIN));
         Role roleExisting = new RoleMB().withName(ROLE_ADMIN).build();
         User userExisting = new UserMB().withLogin(login).withFirstName(firstName)
                 .withLastName(lastName).withRoles(Set.of(roleExisting)).build();
         when(userRepository.findByEmailOrLogin(user.getLogin())).thenReturn(of(userExisting));
-        when(positionRepository.findAllByCodeIn(user.codesPositions())).thenReturn(emptySet());
         when(roleRepository.findAllByNameIn(user.rolesNames())).thenReturn(Set.of(roleExisting));
         when(userRepository.save(userExisting)).thenReturn(userExisting);
 
@@ -145,11 +137,8 @@ class UpdateUserUseCaseTest {
         updateUserUseCase.execute(login, user);
 
         // Then
-        verify(positionRepository).findAllByCodeIn(user.codesPositions());
         verify(roleRepository).findAllByNameIn(user.rolesNames());
         verify(userRepository).findByEmailOrLogin(user.getLogin());
-        verify(userExisting).updateProfileWith(user.getFirstName(), user.getLastName(), emptySet(),
-                Set.of(roleExisting), user.isValid(), user.isActivate());
         verify(userRepository).save(userExisting);
         verify(userEventPublisher).publishUserUpdatingByAdmin(any());
     }

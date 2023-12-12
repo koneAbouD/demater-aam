@@ -1,6 +1,7 @@
 package com.demater.core.domain.user;
 
 
+import com.demater.core.domain.branch.Branch;
 import com.demater.core.domain.station.Station;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
@@ -31,7 +32,7 @@ public class User {
     private String accessToken;
     private String refreshToken;
     private Set<Role> roles = new HashSet<>();
-    private Set<Position> positions = new HashSet<>();
+    private Set<Branch> branches = new HashSet<>();
     private boolean isActivate;
     private LocalDateTime activationDate;
     private LocalDateTime expirationDate;
@@ -51,7 +52,7 @@ public class User {
                 String accessToken,
                 String refreshToken,
                 Set<Role> roles,
-                Set<Position> positions,
+                Set<Branch> branches,
                 boolean isActivate,
                 LocalDateTime activationDate,
                 LocalDateTime expirationDate,
@@ -69,7 +70,7 @@ public class User {
         this.accessToken = accessToken;
         this.refreshToken = refreshToken;
         this.roles = roles;
-        this.positions = positions;
+        this.branches = branches;
         this.isActivate = isActivate;
         this.activationDate = activationDate;
         this.expirationDate = expirationDate;
@@ -80,12 +81,10 @@ public class User {
         this.station = station;
     }
 
-    public void updateUserForCreatingWith(Set<Position> positions,
-                                          Set<Role> roles,
+    public void updateUserForCreatingWith(Set<Role> roles,
                                           String password,
                                           String accessOrConfirmationToken,
                                           String passwordGenerated) {
-        this.positions = positions;
         this.roles = roles;
         this.password = password;
         this.accessToken = accessOrConfirmationToken;
@@ -108,12 +107,10 @@ public class User {
 
     public void updateProfileWith(String firstName,
                                   String lastName,
-                                  Set<Position> positions,
                                   Set<Role> roles,
                                   boolean valid,
                                   boolean activate) {
         updateProfileWith(firstName, lastName);
-        this.positions = positions;
         this.roles = roles;
         this.valid = valid;
         if (this.isActivate != activate) {
@@ -121,10 +118,6 @@ public class User {
         }
         this.isActivate = activate;
 
-    }
-
-    public Set<String> codesPositions() {
-        return getPositions().stream().map(Position::getCode).collect(toSet());
     }
 
     public Set<ERole> rolesNames() {

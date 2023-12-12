@@ -1,6 +1,6 @@
 package com.demater.infrastructure.mail;
 
-import com.demater.core.domain.exception.NotificationException;
+import com.demater.core.exception.NotificationException;
 import com.demater.core.domain.user.User;
 import com.demater.core.port.Notification;
 import org.slf4j.Logger;

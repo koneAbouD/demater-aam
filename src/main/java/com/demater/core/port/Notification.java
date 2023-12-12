@@ -1,6 +1,6 @@
 package com.demater.core.port;
 
-import com.demater.core.domain.exception.NotificationException;
+import com.demater.core.exception.NotificationException;
 import com.demater.core.domain.user.User;
 
 public interface Notification {
