@@ -25,9 +25,9 @@ clients en station. <br>
 
 ### i. Installation de la Base de données
 ```bash
-database: jeupromototalenergies
-user: jeupromototalenergies
-password: jeupromototalenergies
+database: aam
+user: aam
+password: aam
 ```
 
 Pour installer la base nous exécutons les commandes suivantes :

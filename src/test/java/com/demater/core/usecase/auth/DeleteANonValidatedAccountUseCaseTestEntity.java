@@ -28,7 +28,7 @@ import static org.mockito.quality.Strictness.LENIENT;
 
 @ExtendWith(MockitoExtension.class)
 @MockitoSettings(strictness = LENIENT)
-class DeleteANonValidatedAccountUseCaseTest {
+class DeleteANonValidatedAccountUseCaseTestEntity {
     @Mock
     private UserRepository userRepository;
     @Mock

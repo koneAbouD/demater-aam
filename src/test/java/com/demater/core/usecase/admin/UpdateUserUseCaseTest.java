@@ -39,8 +39,6 @@ class UpdateUserUseCaseTest {
     @Mock
     private UserRepository userRepository;
     @Mock
-    private PositionRepository positionRepository;
-    @Mock
     private RoleRepository roleRepository;
     @Mock
     private UserEventPublisher userEventPublisher;
