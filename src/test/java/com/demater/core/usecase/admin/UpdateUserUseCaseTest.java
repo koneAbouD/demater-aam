@@ -6,7 +6,6 @@ import com.demater.core.domain.user.Role;
 import com.demater.core.domain.user.User;
 import com.demater.core.event.user.UserDeletingEvent;
 import com.demater.core.event.user.UserUpdatingByAdminEvent;
-import com.demater.core.port.PositionRepository;
 import com.demater.core.port.RoleRepository;
 import com.demater.core.port.UserRepository;
 import com.demater.core.publisher.UserEventPublisher;
@@ -27,7 +26,6 @@ import static com.demater.core.domain.common.Constants.ROLES_ARE_NOT_FOUND;
 import static com.demater.core.domain.common.Constants.SUPER_ADMIN_CREATING;
 import static com.demater.core.domain.user.ERole.ROLE_ADMIN;
 import static com.demater.core.domain.user.ERole.ROLE_SUPER_ADMIN;
-import static java.util.Collections.emptySet;
 import static java.util.Optional.of;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -50,7 +48,7 @@ class UpdateUserUseCaseTest {
 
     @BeforeEach
     void setUp() {
-        updateUserUseCase = new UpdateUserUseCase(userRepository, positionRepository, roleRepository, userEventPublisher);
+        updateUserUseCase = new UpdateUserUseCase(userRepository, roleRepository, userEventPublisher);
     }
 
     @Test

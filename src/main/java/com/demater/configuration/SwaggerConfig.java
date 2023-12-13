@@ -26,7 +26,7 @@ public class SwaggerConfig {
 
 
     private Info getInfo() {
-        return new Info().title("Jeu Promo Boutique TotalEnergies APIs")
-                .description("Cette interface liste tous les endpoints liés au jeu promo boutique");
+        return new Info().title("agency account manager APIs")
+                .description("The role of this application is created a banking account for they customers");
     }
 }

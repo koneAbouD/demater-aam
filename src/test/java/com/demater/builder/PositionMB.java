@@ -1,7 +1,5 @@
 package com.demater.builder;
 
-import com.demater.core.domain.user.Position;
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 

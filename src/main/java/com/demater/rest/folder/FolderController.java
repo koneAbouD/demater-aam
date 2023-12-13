@@ -9,28 +9,30 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.tags.Tags;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+
 import static org.springframework.http.HttpStatus.OK;
 
-@Tags(value = {@Tag(name = "folder", description = "TotalEnergies gas station")})
+@Tags(value = {
+        @Tag(name = "Folder", description = "")
+})
 @RestController
-@RequestMapping("folder")
+@RequestMapping("Folders")
 @RequiredArgsConstructor
-public class
-FolderController {
+public class FolderController {
     private final GetAllFoldersUseCase getAllFolders;
     private final ObjectMapper objectMapper;
 
     @GetMapping
-    @Operation(summary = "Get all folders by admin")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
-    public ResponseEntity<List<FolderOut>> getStations() {
+    @Operation(summary = "Getting all folders")
+    public ResponseEntity<List<FolderOut>> getFolders() {
         List<Folder> folders = getAllFolders.execute();
         List<FolderOut> results = folders.stream()
-                .map(s -> objectMapper.convertValue(s, FolderOut.class))
+                .map(r -> objectMapper.convertValue(r, FolderOut.class))
                 .toList();
         return new ResponseEntity<>(results, OK);
     }

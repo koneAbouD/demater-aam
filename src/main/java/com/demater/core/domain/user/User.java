@@ -1,7 +1,6 @@
 package com.demater.core.domain.user;
 
 
-import com.demater.core.domain.branch.Branch;
 import com.demater.core.domain.station.Station;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;

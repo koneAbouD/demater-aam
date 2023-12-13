@@ -1,10 +1,11 @@
 package com.demater.core.domain.account;
 
+import com.demater.core.domain.user.Branch;
 import com.demater.core.domain.customer.Customer;
+import com.demater.core.domain.document.Document;
 import lombok.*;
 
-import java.util.List;
-import java.util.UUID;
+import java.util.Set;
 
 @Builder
 @NoArgsConstructor
@@ -12,9 +13,12 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Account {
-    private UUID id;
+    private Long id;
     private String designation;
     private String accountCode;
     private Customer customer;
-    private List<Customer> coOwner;
+    private Set<Customer> coOwner;
+    private Set<Document> documentsRequired;
+    private Set<Document> documentsSigned;
+    private Branch branch;
 }

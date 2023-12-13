@@ -49,7 +49,6 @@ class CreateUserUseCaseTest {
     @BeforeEach
     void setUp() {
         createUserUseCase = new CreateUserUseCase(userRepository,
-                positionRepository,
                 roleRepository,
                 authEventPublisher,
                 password,

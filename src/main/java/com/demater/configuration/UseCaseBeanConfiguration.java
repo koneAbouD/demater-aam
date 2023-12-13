@@ -1,25 +1,9 @@
 package com.demater.configuration;
 
 import com.demater.core.port.*;
-import com.demater.core.port.Authentication;
-import com.demater.core.port.CityRepository;
-import com.demater.core.port.GadgetConfirmationRepository;
-import com.demater.core.port.GadgetRepository;
-import com.demater.core.port.GadgetTypeRepository;
-import com.demater.core.port.Notification;
-import com.demater.core.port.Password;
-import com.demater.core.port.PositionRepository;
-import com.demater.core.port.RoleRepository;
-import com.demater.core.port.StationCSVFile;
-import com.demater.core.port.StationDeleteTime;
-import com.demater.core.port.StationGadgetRepository;
-import com.demater.core.port.StationRepository;
-import com.demater.core.port.UserRepository;
-import com.demater.core.publisher.*;
 import com.demater.core.publisher.AuthEventPublisher;
 import com.demater.core.publisher.CityEventPublisher;
 import com.demater.core.publisher.GadgetEventPublisher;
-import com.demater.core.publisher.PositionEventPublisher;
 import com.demater.core.publisher.RoleEventPublisher;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.publisher.UserEventPublisher;
@@ -27,13 +11,12 @@ import com.demater.core.usecase.admin.CreateUserUseCase;
 import com.demater.core.usecase.admin.DeleteUserUseCase;
 import com.demater.core.usecase.admin.GetAllUserDetailsUseCase;
 import com.demater.core.usecase.admin.UpdateUserUseCase;
-import com.demater.core.usecase.auth.*;
 import com.demater.core.usecase.auth.AuthenticateUserUseCase;
 import com.demater.core.usecase.auth.CheckUserUseCase;
 import com.demater.core.usecase.auth.DeleteANonValidatedAccountUseCase;
 import com.demater.core.usecase.auth.ResetPasswordUseCase;
 import com.demater.core.usecase.auth.SendResetPasswordUseCase;
-import com.demater.core.usecase.gadget.*;
+import com.demater.core.usecase.folder.GetAllFoldersUseCase;
 import com.demater.core.usecase.gadget.ConfirmGadgetReceptionUseCase;
 import com.demater.core.usecase.gadget.CreateGadgetTypeUseCase;
 import com.demater.core.usecase.gadget.CreateGadgetUseCase;
@@ -44,7 +27,6 @@ import com.demater.core.usecase.gadget.GetGadgetsUseCase;
 import com.demater.core.usecase.gadget.UpdateGadgetTypeUseCase;
 import com.demater.core.usecase.gadget.UpdateGadgetUseCase;
 import com.demater.core.usecase.referential.GetCitiesUseCase;
-import com.demater.core.usecase.station.*;
 import com.demater.core.usecase.station.AddUsersToStationUseCase;
 import com.demater.core.usecase.station.CreateStationUseCase;
 import com.demater.core.usecase.station.DeleteStationUseCase;
@@ -54,8 +36,6 @@ import com.demater.core.usecase.station.IntegrateGadgetsInStationUseCase;
 import com.demater.core.usecase.station.RecoveringGadgetsSentUseCase;
 import com.demater.core.usecase.station.RemoveUsersFromStationUseCase;
 import com.demater.core.usecase.station.UpdateStationUseCase;
-import com.demater.core.usecase.user.*;
-import com.demater.core.usecase.user.GetAllPositionsUseCase;
 import com.demater.core.usecase.user.GetAllRolesUseCase;
 import com.demater.core.usecase.user.GetUserDetailsUseCase;
 import com.demater.core.usecase.user.UpdateUserPasswordUseCase;
@@ -66,16 +46,19 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class UseCaseBeanConfiguration {
     @Bean
+    public GetAllFoldersUseCase getAllFoldersUseCase(FolderRepository folderRepository) {
+        return new GetAllFoldersUseCase(folderRepository);
+    }
+    @Bean
     public DeleteUserUseCase getDeleteUserUseCase(UserRepository userRepository, UserEventPublisher userEventPublisher) {
         return new DeleteUserUseCase(userRepository, userEventPublisher);
     }
 
     @Bean
     public UpdateUserUseCase getUpdateUserUseCase(UserRepository userRepository,
-                                                  PositionRepository positionRepository,
                                                   RoleRepository roleRepository,
                                                   UserEventPublisher userEventPublisher) {
-        return new UpdateUserUseCase(userRepository, positionRepository, roleRepository, userEventPublisher);
+        return new UpdateUserUseCase(userRepository, roleRepository, userEventPublisher);
     }
 
     @Bean
@@ -257,11 +240,6 @@ public class UseCaseBeanConfiguration {
         return new UpdateStationUseCase(stationRepository, cityRepository, stationEventPublisher);
     }
 
-    @Bean
-    public GetAllPositionsUseCase getAllPositionsUseCase(PositionRepository positionRepository,
-                                                         PositionEventPublisher positionEventPublisher) {
-        return new GetAllPositionsUseCase(positionRepository, positionEventPublisher);
-    }
 
     @Bean
     public GetAllRolesUseCase getAllRolesUseCase(RoleRepository roleRepository, RoleEventPublisher roleEventPublisher) {

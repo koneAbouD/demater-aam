@@ -1,6 +1,5 @@
 package com.demater.core.usecase.admin;
 
-import com.demater.core.domain.user.Position;
 import com.demater.core.domain.user.Role;
 import com.demater.core.domain.user.User;
 import com.demater.core.event.user.UserCreatedEvent;
