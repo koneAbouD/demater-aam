@@ -1,8 +1,6 @@
 package com.demater.rest.account.in;
 
-import java.util.UUID;
-
-public record AccountIn(
+public record AccountCreateIn(
         String businessKey,
         String designation,
         String accountCode

@@ -6,6 +6,7 @@ import com.demater.core.domain.document.Document;
 import lombok.*;
 
 import java.util.Set;
+import java.util.UUID;
 
 @Builder
 @NoArgsConstructor
@@ -13,6 +14,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Account {
+    private UUID id;
     private String businessKey;
     private String designation;
     private String accountCode;

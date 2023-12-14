@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface AccountRepository {
     List<Account> findAll();
-    Folder save(Account account);
+    Account save(Account account);
 }

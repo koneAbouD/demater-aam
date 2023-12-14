@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public record AccountOut(
+        UUID id,
         String businessKey,
         String designation,
         String accountCode,

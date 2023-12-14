@@ -12,7 +12,7 @@ import java.util.UUID;
 @Getter
 @Setter
 public class Customer {
-    private Long id;
+    private UUID id;
     private String customerCode;
     private String firstName;
     private String LastNames;

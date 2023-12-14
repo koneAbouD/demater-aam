@@ -1,10 +1,21 @@
 package com.demater.infrastructure.database.entity.account;
 
 import com.demater.infrastructure.database.entity.CustomAuditAbstract;
+import com.demater.infrastructure.database.entity.gadget.GadgetTypeEntity;
 import jakarta.persistence.*;
+import lombok.*;
 
-public class AccountType extends CustomAuditAbstract {
-    public static final String TABLE_NAME = "accountType";
+@Builder
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+@Entity
+@Table(name = AccountTypeEntity.TABLE_NAME)
+@Access(AccessType.FIELD)
+public class AccountTypeEntity extends CustomAuditAbstract {
+    public static final String TABLE_NAME = "account_type";
 
     public static final String ID = "_id";
     public static final String SEQ = TABLE_NAME + ID + "_seq";
@@ -17,7 +28,7 @@ public class AccountType extends CustomAuditAbstract {
     private Long id;
     private String designation;
 
-    public AccountType(String designation) {
+    public AccountTypeEntity(String designation) {
         this.designation = designation;
     }
 
