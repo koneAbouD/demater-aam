@@ -73,9 +73,9 @@ public class AccountEntity extends CustomAuditAbstract {
     @OnDelete(action = NO_ACTION)
     private BranchEntity branch;
 
+    //@NotNull(message = "The status can't be null")
     @Enumerated(EnumType.STRING)
-    @Column(name = "name", length = 20, nullable = false)
-    @NotNull(message = "The status can't be null")
+    @Column(name = "status", length = 20, nullable = true)
     private EStatus status;
 
     @NotNull(message = "The account type can't be null")

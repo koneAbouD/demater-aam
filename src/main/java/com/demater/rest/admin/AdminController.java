@@ -1,11 +1,12 @@
 package com.demater.rest.admin;
 
+import com.demater.core.domain.account.Account;
+import com.demater.core.domain.account.AccountType;
+import com.demater.core.usecase.admin.*;
+import com.demater.rest.admin.in.AccountTypeCreateIn;
+import com.demater.rest.admin.out.AccountTypeDetailOut;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demater.core.domain.user.User;
-import com.demater.core.usecase.admin.CreateUserUseCase;
-import com.demater.core.usecase.admin.DeleteUserUseCase;
-import com.demater.core.usecase.admin.GetAllUserDetailsUseCase;
-import com.demater.core.usecase.admin.UpdateUserUseCase;
 import com.demater.rest.admin.in.UpdateUserByAdminIn;
 import com.demater.rest.admin.out.UserDetailByAdminOut;
 import com.demater.rest.auth.in.UserCreateIn;
@@ -36,6 +37,7 @@ public class AdminController {
     private final GetAllUserDetailsUseCase getAllUserDetails;
     private final UpdateUserUseCase updateUser;
     private final DeleteUserUseCase deleteUser;
+    private final CreateAccountTypeUseCase createAccountType;
     private final ObjectMapper objectMapper;
 
     @PostMapping("/users")
@@ -74,5 +76,13 @@ public class AdminController {
     public ResponseEntity<Void> deleteUserByAdmin(@PathVariable String login) {
         deleteUser.execute(login);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("/accountType")
+    //@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
+    @Operation(summary = "Create new account type")
+    public ResponseEntity<AccountTypeDetailOut> createUser(@RequestBody @Validated AccountTypeCreateIn accountTypeCreateIn) {
+        AccountType accountType = objectMapper.convertValue(accountTypeCreateIn, AccountType.class);
+        accountType = createAccountType.execute(accountType.getDesignation());
+        return new ResponseEntity<>(objectMapper.convertValue(accountType, AccountTypeDetailOut.class), CREATED);
     }
 }

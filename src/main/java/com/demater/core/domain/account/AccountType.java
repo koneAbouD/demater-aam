@@ -1,5 +1,12 @@
 package com.demater.core.domain.account;
 
+import lombok.*;
+
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
+@Setter
 public class AccountType {
     private Long id;
     private String designation;

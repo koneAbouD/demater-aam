@@ -25,4 +25,6 @@ public class Account {
     private Branch branch;
     private EStatus status;
     private AccountType type;
+
+
 }

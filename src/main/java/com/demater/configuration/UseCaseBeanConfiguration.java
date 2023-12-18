@@ -7,7 +7,9 @@ import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.publisher.RoleEventPublisher;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.publisher.UserEventPublisher;
-import com.demater.core.usecase.account.CreateAccountTypeUseCase;
+import com.demater.core.usecase.admin.CreateAccountTypeUseCase;
+import com.demater.core.usecase.account.CreateAccountUseCase;
+import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
 import com.demater.core.usecase.account.GetAllAccountsUseCase;
 import com.demater.core.usecase.admin.CreateUserUseCase;
 import com.demater.core.usecase.admin.DeleteUserUseCase;
@@ -51,6 +53,14 @@ public class UseCaseBeanConfiguration {
     @Bean
     public GetAllAccountsUseCase getAllAccountsUseCase(AccountRepository accountRepository) {
         return new GetAllAccountsUseCase(accountRepository);
+    }
+    @Bean
+    public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository, AccountTypeRepository accountTypeRepository) {
+        return new CreateAccountUseCase(accountRepository, accountTypeRepository);
+    }
+    @Bean
+    public GetAllAccountTypeUseCase getAllAccountTypeUseCase(AccountTypeRepository accountTypeRepository) {
+        return new GetAllAccountTypeUseCase(accountTypeRepository);
     }
     @Bean
     public CreateAccountTypeUseCase getCreateAccountTypeUseCase(AccountTypeRepository accountTypeRepository) {
