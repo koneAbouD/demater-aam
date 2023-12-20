@@ -5,6 +5,7 @@ import com.demater.core.domain.account.AccountType;
 import com.demater.core.domain.gadget.GadgetType;
 import com.demater.core.port.AccountRepository;
 import com.demater.core.port.AccountTypeRepository;
+import com.demater.core.usecase.account.exception.AccountAlreadyExistsException;
 import com.demater.core.usecase.account.exception.AccountNotFoundException;
 import com.demater.core.usecase.gadget.exception.GadgetTypeAlreadyExistsException;
 import com.demater.core.usecase.gadget.exception.GadgetTypeNotFoundException;
@@ -18,7 +19,7 @@ public class CreateAccountUseCase {
 
     public Account execute(Account account) {
         if (accountRepository.existsByBusinessKeyIgnoreCase(account.getBusinessKey())) {
-            throw new GadgetTypeAlreadyExistsException("Account [" + account.getBusinessKey() + "] already exists");
+            throw new AccountAlreadyExistsException("Account [" + account.getBusinessKey() + "] already exists");
         }
         AccountType accountType = accountTypeRepository.findById(account.getType().getId())
                 .orElseThrow(() -> new AccountNotFoundException("Account type ID=[" + account.getType().getId() + "] don't exists"));

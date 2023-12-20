@@ -2,7 +2,9 @@ package com.demater.configuration;
 
 import io.swagger.v3.oas.models.Components;
 import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
 import io.swagger.v3.oas.models.security.SecurityRequirement;
 import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.context.annotation.Bean;
@@ -24,9 +26,18 @@ public class SwaggerConfig {
                                 .bearerFormat("JWT")));
     }
 
-
     private Info getInfo() {
-        return new Info().title("agency account manager APIs")
-                .description("The role of this application is created a banking account for they customers");
+        Contact contact = new Contact();
+        contact.setEmail("dkone@box.africa");
+        contact.setName("Box Africa");
+
+        License mitLicense = new License().name("MIT License")
+                .url("<https://choosealicense.com/licenses/mit/>");
+        return new Info()
+                .contact(contact)
+                .version("0.0.1")
+                .title("agency account manager APIs")
+                .description("The role of this application is created a banking account for they customers")
+                .license(mitLicense);
     }
 }

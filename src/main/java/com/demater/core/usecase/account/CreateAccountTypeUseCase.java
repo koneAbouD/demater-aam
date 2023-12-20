@@ -1,7 +1,8 @@
-package com.demater.core.usecase.admin;
+package com.demater.core.usecase.account;
 
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.port.AccountTypeRepository;
+import com.demater.core.usecase.account.exception.AccountTypeAlreadyExistsException;
 import com.demater.core.usecase.gadget.exception.GadgetTypeAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 
@@ -12,7 +13,7 @@ public class CreateAccountTypeUseCase {
 
     public AccountType execute(String name) {
         if (accountTypeRepository.existsByDesignationIgnoreCase(name)) {
-            throw new GadgetTypeAlreadyExistsException("Account type [" + name + "] already exists");
+            throw new AccountTypeAlreadyExistsException("Account type [" + name + "] already exists");
         }
 
         AccountType accountType = accountTypeRepository.save(new AccountType(name));

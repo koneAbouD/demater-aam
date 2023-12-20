@@ -55,7 +55,7 @@ public class AccountController {
     }
     @PostMapping
     //@PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
-    @Operation(summary = "Creating account")
+    @Operation(summary = "Creating account with account information")
     public ResponseEntity<AccountOut> createGadget(@Validated @RequestBody AccountCreateIn request) {
         Account account = objectMapper.convertValue(request, Account.class);
         Account accountSaved = createAccount.execute(account);

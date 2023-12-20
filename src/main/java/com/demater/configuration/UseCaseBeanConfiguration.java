@@ -7,7 +7,7 @@ import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.publisher.RoleEventPublisher;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.publisher.UserEventPublisher;
-import com.demater.core.usecase.admin.CreateAccountTypeUseCase;
+import com.demater.core.usecase.account.CreateAccountTypeUseCase;
 import com.demater.core.usecase.account.CreateAccountUseCase;
 import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
 import com.demater.core.usecase.account.GetAllAccountsUseCase;

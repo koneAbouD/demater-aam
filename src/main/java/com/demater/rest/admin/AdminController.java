@@ -1,7 +1,7 @@
 package com.demater.rest.admin;
 
-import com.demater.core.domain.account.Account;
 import com.demater.core.domain.account.AccountType;
+import com.demater.core.usecase.account.CreateAccountTypeUseCase;
 import com.demater.core.usecase.admin.*;
 import com.demater.rest.admin.in.AccountTypeCreateIn;
 import com.demater.rest.admin.out.AccountTypeDetailOut;
