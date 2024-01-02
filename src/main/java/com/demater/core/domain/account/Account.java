@@ -26,15 +26,25 @@ public class Account {
     private Branch branch;
     private AccountType type;
     private EStatus status;
+    private String motif;
     private boolean checkCIP;
     private String levelRisque;
 
-    public void UpdateWithIinfosOfCustomer(
+    public void createWithAccountInfos(AccountType type, Customer customer, String motif){
+        this.type = type;
+        this.customer = customer;
+        this.motif = motif;
+    }
+    public void updateWithCustomerInfos(
             String businessKey,
             Customer customer,
             Set<Customer> coOwners) {
         this.businessKey = businessKey;
         this.customer = customer;
         this.coOwners = coOwners;
+    }
+
+    public String type() {
+        return getType().getName();
     }
 }

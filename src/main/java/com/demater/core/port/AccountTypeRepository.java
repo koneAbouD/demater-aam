@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountTypeRepository {
-    boolean existsByDesignationIgnoreCase(String name);
+    boolean existsByNameIgnoreCase(String name);
     AccountType save(AccountType accountType);
     Optional<AccountType> findById(Long id);
     void delete(AccountType gadgetType);

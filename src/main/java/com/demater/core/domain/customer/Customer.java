@@ -16,5 +16,8 @@ public class Customer {
     private String customerCode;
     private String firstName;
     private String LastNames;
+    private CustomerType type;
+    private LegalCapacity legalCapacity;
     private Set<Profession> profession;
+
 }

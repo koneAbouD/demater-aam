@@ -19,7 +19,7 @@ public class UpdateGadgetTypeUseCase {
 
         if (!existingGadgetType.getDesignation().equalsIgnoreCase(gadgetType.getDesignation()) &&
                 gadgetTypeRepository.existsByDesignationIgnoreCase(gadgetType.getDesignation())) {
-            throw new GadgetTypeAlreadyExistsException("Gadget type ID [" + gadgetType.getDesignation() + "] already exists");
+            throw new GadgetTypeAlreadyExistsException("Gadget type Designation [" + gadgetType.getDesignation() + "] already exists");
         }
 
         existingGadgetType.update(gadgetType.getDesignation());

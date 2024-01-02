@@ -82,7 +82,7 @@ public class AdminController {
     @Operation(summary = "Create new account type")
     public ResponseEntity<AccountTypeDetailOut> createUser(@RequestBody @Validated AccountTypeCreateIn accountTypeCreateIn) {
         AccountType accountType = objectMapper.convertValue(accountTypeCreateIn, AccountType.class);
-        accountType = createAccountType.execute(accountType.getDesignation());
+        accountType = createAccountType.execute(accountType);
         return new ResponseEntity<>(objectMapper.convertValue(accountType, AccountTypeDetailOut.class), CREATED);
     }
 }

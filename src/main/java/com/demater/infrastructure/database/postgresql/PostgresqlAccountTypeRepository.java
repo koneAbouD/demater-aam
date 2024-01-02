@@ -1,13 +1,9 @@
 package com.demater.infrastructure.database.postgresql;
 
 import com.demater.core.domain.account.AccountType;
-import com.demater.core.domain.gadget.GadgetType;
 import com.demater.core.port.AccountTypeRepository;
-import com.demater.core.port.GadgetTypeRepository;
 import com.demater.infrastructure.database.entity.account.AccountTypeEntity;
-import com.demater.infrastructure.database.entity.gadget.GadgetTypeEntity;
 import com.demater.infrastructure.database.repository.JpaAccountTypeRepository;
-import com.demater.infrastructure.database.repository.JpaGadgetTypeRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -22,8 +18,8 @@ public class PostgresqlAccountTypeRepository implements AccountTypeRepository {
     private final ObjectMapper objectMapper;
 
     @Override
-    public boolean existsByDesignationIgnoreCase(String name) {
-        return accountTypeRepository.existsByDesignationIgnoreCase(name);
+    public boolean existsByNameIgnoreCase(String name) {
+        return accountTypeRepository.existsByNameIgnoreCase(name);
     }
 
     @Override

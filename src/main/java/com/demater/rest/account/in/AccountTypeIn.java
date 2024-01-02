@@ -4,9 +4,11 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 public record AccountTypeIn(
-        @NotNull(message = "Account type id can't be null")
         Long id,
-
-        @NotEmpty(message="Designation can't be empty")
-        @NotNull(message = "Account type designation can't be null")
-        String designation) {}
+        @NotEmpty(message="Code can't be empty")
+        @NotNull(message = "Account type code can't be null")
+        String code,
+        @NotEmpty(message="Name can't be empty")
+        @NotNull(message = "Account type name can't be null")
+        String name
+        ) {}

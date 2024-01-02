@@ -1,5 +1,6 @@
 package com.demater.core.domain.account;
 
+import com.demater.core.domain.CodeNameAbstract;
 import lombok.*;
 
 @Builder
@@ -7,15 +8,11 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-public class AccountType {
+@EqualsAndHashCode
+public class AccountType extends CodeNameAbstract {
     private Long id;
-    private String designation;
-
-    public AccountType(String designation) {
-        this.designation = designation;
-    }
-
-    public void update(String designation) {
-        this.designation = designation;
+    public AccountType(String code, String name){
+        this.code = code;
+        this.name = name;
     }
 }

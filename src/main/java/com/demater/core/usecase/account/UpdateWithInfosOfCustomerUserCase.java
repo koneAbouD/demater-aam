@@ -1,24 +1,17 @@
 package com.demater.core.usecase.account;
 
 import com.demater.core.domain.account.Account;
-import com.demater.core.domain.gadget.Gadget;
-import com.demater.core.domain.gadget.GadgetType;
-import com.demater.core.event.gadget.GadgetUpdatingEvent;
+import com.demater.core.domain.customer.Customer;
 import com.demater.core.port.AccountRepository;
 import com.demater.core.port.CustomerRepository;
-import com.demater.core.port.GadgetRepository;
-import com.demater.core.port.GadgetTypeRepository;
-import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.usecase.account.exception.AccountNotFoundException;
 import com.demater.core.usecase.gadget.exception.GadgetAlreadyExistsException;
-import com.demater.core.usecase.gadget.exception.GadgetNotFoundException;
-import com.demater.core.usecase.gadget.exception.GadgetTypeNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
 
 @RequiredArgsConstructor
-public class UpdateWithIinfosOfCustomerUserCase {
+public class UpdateWithInfosOfCustomerUserCase {
     private final AccountRepository accountRepository;
     private final CustomerRepository customerRepository;
     //private final GadgetEventPublisher gadgetEventPublisher;
@@ -34,8 +27,9 @@ public class UpdateWithIinfosOfCustomerUserCase {
                 accountRepository.existsByBusinessKeyIgnoreCase(account.getBusinessKey())) {
             throw new GadgetAlreadyExistsException("Account [" + account.getBusinessKey() + "] already exists");
         }
+        Customer customer = Customer.builder().build();
 
-        accountToUpdate.UpdateWithIinfosOfCustomer(
+        accountToUpdate.updateWithCustomerInfos(
                 account.getBusinessKey(),
                 account.getCustomer(),
                 account.getCoOwners()

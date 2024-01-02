@@ -55,8 +55,8 @@ public class UseCaseBeanConfiguration {
         return new GetAllAccountsUseCase(accountRepository);
     }
     @Bean
-    public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository, AccountTypeRepository accountTypeRepository) {
-        return new CreateAccountUseCase(accountRepository, accountTypeRepository);
+    public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository, AccountTypeRepository accountTypeRepository, CustomerTypeRepository customerTypeRepository) {
+        return new CreateAccountUseCase(accountRepository, accountTypeRepository, customerTypeRepository);
     }
     @Bean
     public GetAllAccountTypeUseCase getAllAccountTypeUseCase(AccountTypeRepository accountTypeRepository) {

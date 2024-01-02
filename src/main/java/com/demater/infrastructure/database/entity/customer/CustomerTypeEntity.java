@@ -1,7 +1,6 @@
-package com.demater.infrastructure.database.entity.account;
+package com.demater.infrastructure.database.entity.customer;
 
 import com.demater.infrastructure.database.entity.CodeNameAbstract;
-import com.demater.infrastructure.database.entity.CustomAuditAbstract;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,10 +11,10 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = AccountTypeEntity.TABLE_NAME)
+@Table(name = CustomerTypeEntity.TABLE_NAME)
 @Access(AccessType.FIELD)
-public class AccountTypeEntity extends CodeNameAbstract {
-    public static final String TABLE_NAME = "account_type";
+public class CustomerTypeEntity extends CodeNameAbstract {
+    public static final String TABLE_NAME = "customer_type";
 
     public static final String ID = "_id";
     public static final String SEQ = TABLE_NAME + ID + "_seq";
@@ -27,7 +26,7 @@ public class AccountTypeEntity extends CodeNameAbstract {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    public AccountTypeEntity(String code, String name) {
+    public CustomerTypeEntity(String code, String name) {
         this.code = code;
         this.name = name;
     }

@@ -1,6 +1,5 @@
 package com.demater.core.port;
 
-import com.demater.core.domain.account.AccountType;
 import com.demater.core.domain.customer.Customer;
 
 import java.util.List;
