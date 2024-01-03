@@ -1,12 +1,15 @@
 package com.demater.infrastructure.database.entity.profession;
 
-import com.demater.infrastructure.database.entity.document.DocumentEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UuidGenerator;
 
 import java.util.UUID;
 
+import static jakarta.persistence.FetchType.EAGER;
+import static org.hibernate.annotations.OnDeleteAction.NO_ACTION;
 import static org.hibernate.annotations.UuidGenerator.Style.TIME;
 
 @Builder
@@ -25,4 +28,9 @@ public class ProfessionEntity {
     private UUID id;
     private String businessKey;
     private String designation;
+    @NotNull(message = "The professional categorie can't be null")
+    @ManyToOne(fetch = EAGER, optional = false)
+    @JoinColumn(name = "categorie_professionnelle_id", nullable = false)
+    @OnDelete(action = NO_ACTION)
+    private CatProfessionnelleEntity catProfessionnelle;
 }

@@ -36,7 +36,7 @@ public class SwaggerConfig {
         return new Info()
                 .contact(contact)
                 .version("0.0.1")
-                .title("agency account manager APIs")
+                .title("Agency account manager APIs")
                 .description("The role of this application is created a banking account for they customers")
                 .license(mitLicense);
     }

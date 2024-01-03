@@ -33,7 +33,7 @@ public class CustomerEntity extends CustomAuditAbstract {
     private String firstName;
     private String LastNames;
 
-    @ManyToMany(fetch = EAGER)
+    @ManyToMany(fetch = EAGER,cascade=CascadeType.ALL)
     @JoinTable(name = "customer_profession",
             joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "profession_id", referencedColumnName = "id"))

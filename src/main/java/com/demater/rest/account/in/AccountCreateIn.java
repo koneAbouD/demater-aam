@@ -6,6 +6,6 @@ public record AccountCreateIn(
         String businessKey,
         String designation,
         AccountTypeIn type,
-        String accountCode
+        CustomerIn customer
 ) {
 }

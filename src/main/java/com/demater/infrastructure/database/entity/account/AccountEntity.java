@@ -42,7 +42,7 @@ public class AccountEntity extends CustomAuditAbstract {
     private String designation;
     private String accountCode;
 
-    @ManyToOne(fetch = EAGER)
+    @ManyToOne(fetch = EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     @OnDelete(action = NO_ACTION)
     private CustomerEntity customer;
