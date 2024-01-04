@@ -14,37 +14,34 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class EventBeanConfiguration {
-
+    @Bean
+    AccountEventPublisherAdapter accountEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
+        return new AccountEventPublisherAdapter(eventPublisher);
+    }
     @Bean
     AuthEventPublisherAdapter authEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new AuthEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     UserEventPublisherAdapter userEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new UserEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     PositionEventPublisherAdapter positionEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new PositionEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     RoleEventPublisherAdapter roleEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new RoleEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     StationEventPublisherAdapter stationEventPublisher(ApplicationEventPublisher eventPublisher) {
         return new StationEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     CityEventPublisherAdapter cityEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new CityEventPublisherAdapter(eventPublisher);
     }
-
     @Bean
     GadgetEventPublisherAdapter gadgetEventPublisherAdapter(ApplicationEventPublisher eventPublisher) {
         return new GadgetEventPublisherAdapter(eventPublisher);

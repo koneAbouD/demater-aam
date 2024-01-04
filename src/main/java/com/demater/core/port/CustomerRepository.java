@@ -4,11 +4,11 @@ import com.demater.core.domain.customer.Customer;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 public interface CustomerRepository {
-    boolean existsByDesignationIgnoreCase(String name);
     Customer save(Customer customer);
-    Optional<Customer> findById(Long id);
-    void delete(Customer customer);
+    Optional<Customer> findById(UUID id);
+
     List<Customer> findAll();
 }

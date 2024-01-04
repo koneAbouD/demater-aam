@@ -36,7 +36,6 @@ public class Account {
         this.motif = motif;
     }
     public void updateWithCustomerInfos(
-            String businessKey,
             Customer customer,
             Set<Customer> coOwners) {
         this.businessKey = businessKey;

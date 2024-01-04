@@ -1,16 +1,8 @@
 package com.demater.configuration;
 
 import com.demater.core.port.*;
-import com.demater.core.publisher.AuthEventPublisher;
-import com.demater.core.publisher.CityEventPublisher;
-import com.demater.core.publisher.GadgetEventPublisher;
-import com.demater.core.publisher.RoleEventPublisher;
-import com.demater.core.publisher.StationEventPublisher;
-import com.demater.core.publisher.UserEventPublisher;
-import com.demater.core.usecase.account.CreateAccountTypeUseCase;
-import com.demater.core.usecase.account.CreateAccountUseCase;
-import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
-import com.demater.core.usecase.account.GetAllAccountsUseCase;
+import com.demater.core.publisher.*;
+import com.demater.core.usecase.account.*;
 import com.demater.core.usecase.admin.CreateUserUseCase;
 import com.demater.core.usecase.admin.DeleteUserUseCase;
 import com.demater.core.usecase.admin.GetAllUserDetailsUseCase;
@@ -49,10 +41,13 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class UseCaseBeanConfiguration {
-
     @Bean
-    public GetAllAccountsUseCase getAllAccountsUseCase(AccountRepository accountRepository) {
-        return new GetAllAccountsUseCase(accountRepository);
+    public UpdateWithCustomerInfosUserCase updateWithCustomerInfosUserCase(AccountRepository accountRepository, CustomerRepository customerRepository) {
+        return new UpdateWithCustomerInfosUserCase(accountRepository, customerRepository);
+    }
+    @Bean
+    public GetAllAccountsUseCase getAllAccountsUseCase(AccountRepository accountRepository, AccountEventPublisher accountEventPublisher) {
+        return new GetAllAccountsUseCase(accountRepository, accountEventPublisher);
     }
     @Bean
     public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository, AccountTypeRepository accountTypeRepository, CustomerTypeRepository customerTypeRepository) {

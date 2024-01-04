@@ -13,11 +13,11 @@ import java.util.UUID;
 @Setter
 public class Customer {
     private UUID id;
-    private String customerCode;
-    private String firstName;
-    private String LastNames;
     private CustomerType type;
+    private String firstName;
+    private String lastNames;
+    private String matherFullNames;
     private LegalCapacity legalCapacity;
     private Set<Profession> profession;
-
+    private String customerCode;
 }

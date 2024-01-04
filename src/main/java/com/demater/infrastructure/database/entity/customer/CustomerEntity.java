@@ -29,9 +29,9 @@ public class CustomerEntity extends CustomAuditAbstract {
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
-    private String customerCode;
     private String firstName;
-    private String LastNames;
+    private String lastNames;
+    private String matherFullNames;
 
     @ManyToMany(fetch = EAGER,cascade=CascadeType.ALL)
     @JoinTable(name = "customer_profession",
@@ -39,4 +39,5 @@ public class CustomerEntity extends CustomAuditAbstract {
             inverseJoinColumns = @JoinColumn(name = "profession_id", referencedColumnName = "id"))
     @OnDelete(action = NO_ACTION)
     private Set<ProfessionEntity> profession;
+    private String customerCode;
 }

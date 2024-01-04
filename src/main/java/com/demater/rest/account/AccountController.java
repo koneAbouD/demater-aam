@@ -5,7 +5,9 @@ import com.demater.core.domain.account.AccountType;
 import com.demater.core.usecase.account.CreateAccountUseCase;
 import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
 import com.demater.core.usecase.account.GetAllAccountsUseCase;
+import com.demater.core.usecase.account.UpdateWithCustomerInfosUserCase;
 import com.demater.rest.account.in.AccountCreateIn;
+import com.demater.rest.account.in.AccountUpdateCustomerInfosIn;
 import com.demater.rest.account.out.AccountOut;
 import com.demater.rest.account.out.AccountTypeOut;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,6 +20,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
@@ -32,6 +35,7 @@ public class AccountController {
     private final GetAllAccountsUseCase getAllAccounts;
     private final GetAllAccountTypeUseCase getAllAccountTypes;
     private final CreateAccountUseCase createAccount;
+    private final UpdateWithCustomerInfosUserCase updateWithCustomerInfosUserCase;
     private final ObjectMapper objectMapper;
 
     @GetMapping
@@ -45,10 +49,17 @@ public class AccountController {
     }
     @PostMapping
     @Operation(summary = "Creating account with account informations")
-    public ResponseEntity<AccountOut> createGadget(@Validated @RequestBody AccountCreateIn request) {
+    public ResponseEntity<AccountOut> createAccount(@Validated @RequestBody AccountCreateIn request) {
         Account account = objectMapper.convertValue(request, Account.class);
         Account accountSaved = createAccount.execute(account);
         return new ResponseEntity<>(objectMapper.convertValue(accountSaved, AccountOut.class), CREATED);
+    }
+    @PutMapping
+    @Operation(summary = "Update account with customer informations")
+    public ResponseEntity<AccountOut> updateWithCustomerInfos(@PathVariable UUID id, @Validated @RequestBody AccountUpdateCustomerInfosIn request) {
+        Account account = objectMapper.convertValue(request, Account.class);
+        Account accountSaved = updateWithCustomerInfosUserCase.execute(id, account);
+        return new ResponseEntity<>(objectMapper.convertValue(accountSaved, AccountOut.class), OK);
     }
     @GetMapping("/types")
     @Operation(summary = "Getting all account types")
