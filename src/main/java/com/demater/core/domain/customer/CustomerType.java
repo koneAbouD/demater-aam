@@ -1,6 +1,6 @@
 package com.demater.core.domain.customer;
 
-import com.demater.core.domain.CodeNameAbstract;
+import com.demater.core.domain.common.CodeNameAbstract;
 import lombok.*;
 
 @Builder

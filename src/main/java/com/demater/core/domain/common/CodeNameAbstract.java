@@ -1,4 +1,4 @@
-package com.demater.core.domain;
+package com.demater.core.domain.common;
 
 import lombok.*;
 

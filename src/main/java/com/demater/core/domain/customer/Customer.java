@@ -16,8 +16,14 @@ public class Customer {
     private CustomerType type;
     private String firstName;
     private String lastNames;
+    private String numTelephone;
+    private String email;
     private String matherFullNames;
+    private ELevelStudent levelStudent;
     private LegalCapacity legalCapacity;
     private Set<Profession> profession;
+    private MaritalStatus maritalStatus;
+    private FamilyStatus familyStatus;
+    private int numbChildrens;
     private String customerCode;
 }

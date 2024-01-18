@@ -1,4 +1,4 @@
-package com.demater.core.domain.account;
+package com.demater.core.domain.reference;
 
 import com.demater.core.domain.common.CodeNameAbstract;
 import lombok.*;
@@ -8,10 +8,9 @@ import lombok.*;
 @AllArgsConstructor
 @Getter
 @Setter
-@EqualsAndHashCode
-public class AccountType extends CodeNameAbstract {
+public class Country extends CodeNameAbstract {
     private Long id;
-    public AccountType(String code, String name){
+    public Country(String code, String name){
         this.code = code;
         this.name = name;
     }

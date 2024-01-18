@@ -38,11 +38,9 @@ public class Account {
     public void updateWithCustomerInfos(
             Customer customer,
             Set<Customer> coOwners) {
-        this.businessKey = businessKey;
         this.customer = customer;
         this.coOwners = coOwners;
     }
-
     public String type() {
         return getType().getName();
     }

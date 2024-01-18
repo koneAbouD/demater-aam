@@ -9,6 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class LegalCapacity extends CodeNameAbstract {
+public class MaritalStatus extends CodeNameAbstract {
     private Long id;
 }

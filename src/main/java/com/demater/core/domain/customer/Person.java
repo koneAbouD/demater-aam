@@ -11,7 +11,8 @@ import java.util.UUID;
 @Setter
 public class Person {
     private UUID id;
-    private String customer_code;
     private String firstName;
     private String LastNames;
+    private String numTelephone;
+    private String email;
 }
