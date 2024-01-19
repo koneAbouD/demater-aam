@@ -28,7 +28,6 @@ public class CreateAccountUseCase {
         CustomerType customerType = customerTypeRepository.findById(account.getCustomer().getType().getId())
                 .orElseThrow(() -> new AccountNotFoundException("Customer type ID=[" + account.getCustomer().getType().getId() + "] don't exists"));
         Customer customer = Customer.builder()
-                .id(account.getCustomer().getId())
                 .type(customerType)
                 .profession(account.getCustomer().getProfession())
                 .legalCapacity(account.getCustomer().getLegalCapacity())

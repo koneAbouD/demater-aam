@@ -5,7 +5,7 @@ import com.demater.core.domain.account.AccountType;
 import com.demater.core.usecase.account.CreateAccountUseCase;
 import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
 import com.demater.core.usecase.account.GetAllAccountsUseCase;
-import com.demater.core.usecase.account.UpdateWithCustomerInfosUserCase;
+import com.demater.core.usecase.customer.CreateCustomerUserCase;
 import com.demater.rest.account.in.AccountCreateIn;
 import com.demater.rest.account.in.AccountUpdateCustomerInfosIn;
 import com.demater.rest.account.out.AccountOut;
@@ -35,7 +35,7 @@ public class AccountController {
     private final GetAllAccountsUseCase getAllAccounts;
     private final GetAllAccountTypeUseCase getAllAccountTypes;
     private final CreateAccountUseCase createAccount;
-    private final UpdateWithCustomerInfosUserCase updateWithCustomerInfosUserCase;
+    private final CreateCustomerUserCase createCustomerUserCase;
     private final ObjectMapper objectMapper;
 
     @GetMapping
@@ -58,7 +58,7 @@ public class AccountController {
     @Operation(summary = "Update account with customer informations")
     public ResponseEntity<AccountOut> updateWithCustomerInfos(@PathVariable UUID id, @Validated @RequestBody AccountUpdateCustomerInfosIn request) {
         Account account = objectMapper.convertValue(request, Account.class);
-        Account accountSaved = updateWithCustomerInfosUserCase.execute(id, account);
+        Account accountSaved = createCustomerUserCase.execute(id, account);
         return new ResponseEntity<>(objectMapper.convertValue(accountSaved, AccountOut.class), OK);
     }
     @GetMapping("/types")
