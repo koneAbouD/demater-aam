@@ -9,7 +9,7 @@ import lombok.*;
 @Getter
 @Setter
 @MappedSuperclass
-public abstract class CodeNameAbstract extends CustomAuditAbstract{
+public abstract class CodeNameAbstractEntity extends CustomAuditAbstract{
 
     protected String code;
     protected String name;

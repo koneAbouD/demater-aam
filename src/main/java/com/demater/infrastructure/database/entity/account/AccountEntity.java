@@ -42,6 +42,12 @@ public class AccountEntity extends CustomAuditAbstract {
     private String designation;
     private String accountCode;
 
+    @NotNull(message = "The account type can't be null")
+    @ManyToOne(fetch = EAGER, optional = false)
+    @JoinColumn(name = "account_type_id", nullable = false)
+    @OnDelete(action = NO_ACTION)
+    private AccountTypeEntity type;
+
     @ManyToOne(fetch = EAGER, cascade=CascadeType.ALL)
     @JoinColumn(name = "customer_id")
     @OnDelete(action = NO_ACTION)
@@ -77,10 +83,4 @@ public class AccountEntity extends CustomAuditAbstract {
     @Enumerated(EnumType.STRING)
     @Column(name = "status", length = 20, nullable = true)
     private EStatus status;
-
-    @NotNull(message = "The account type can't be null")
-    @ManyToOne(fetch = EAGER, optional = false)
-    @JoinColumn(name = "account_type_id", nullable = false)
-    @OnDelete(action = NO_ACTION)
-    private AccountTypeEntity type;
 }

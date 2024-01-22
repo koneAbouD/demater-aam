@@ -13,6 +13,8 @@ import com.demater.core.usecase.auth.DeleteANonValidatedAccountUseCase;
 import com.demater.core.usecase.auth.ResetPasswordUseCase;
 import com.demater.core.usecase.auth.SendResetPasswordUseCase;
 import com.demater.core.usecase.customer.CreateCustomerUserCase;
+import com.demater.core.usecase.customer.UpdateCustomerOfCoordinatedUserCase;
+import com.demater.core.usecase.customer.UpdateCustomerOfGeneralAttributUserCase;
 import com.demater.core.usecase.folder.GetAllFoldersUseCase;
 import com.demater.core.usecase.gadget.ConfirmGadgetReceptionUseCase;
 import com.demater.core.usecase.gadget.CreateGadgetTypeUseCase;
@@ -42,6 +44,15 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class UseCaseBeanConfiguration {
+
+    @Bean
+    public UpdateCustomerOfGeneralAttributUserCase updateCustomerOfGeneralAttributUserCase(CustomerRepository customerRepository) {
+        return new UpdateCustomerOfGeneralAttributUserCase(customerRepository);
+    }
+    @Bean
+    public UpdateCustomerOfCoordinatedUserCase updateCustomerOfCoordinatedUserCase(CustomerRepository customerRepository) {
+        return new UpdateCustomerOfCoordinatedUserCase(customerRepository);
+    }
     @Bean
     public CreateCustomerUserCase createCustomerUserCase(CustomerRepository customerRepository) {
         return new CreateCustomerUserCase(customerRepository);

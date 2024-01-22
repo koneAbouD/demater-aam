@@ -27,13 +27,14 @@ public class CreateAccountUseCase {
 
         CustomerType customerType = customerTypeRepository.findById(account.getCustomer().getType().getId())
                 .orElseThrow(() -> new AccountNotFoundException("Customer type ID=[" + account.getCustomer().getType().getId() + "] don't exists"));
+
         Customer customer = Customer.builder()
                 .type(customerType)
-                .profession(account.getCustomer().getProfession())
-                .legalCapacity(account.getCustomer().getLegalCapacity())
+                .profession(account.profetion())
+                .legalCapacity(account.legalCapacity())
                 .build();
 
-        account.createWithAccountInfos(accountType, customer, account.getMotif());
+        account.createAccount(accountType, customer, account.getMotif());
         Account accountToSave = accountRepository.save(account);
         //gadgetEventPublisher.publishGadgetTypeCreatingEvent(new GadgetTypeCreatingEvent(name));
         return accountToSave;

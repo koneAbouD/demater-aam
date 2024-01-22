@@ -1,6 +1,5 @@
 package com.demater.rest.auth.in;
 
-import com.demater.rest.common.in.PositionIn;
 import com.demater.rest.common.in.RoleIn;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -29,7 +28,5 @@ public record UserCreateIn(
 
     @NotNull(message="Roles can't be null")
     @NotEmpty(message = "User roles can't be empty")
-    Set<RoleIn> roles,
-
-    Set<PositionIn> positions
+    Set<RoleIn> roles
 ) {}

@@ -8,7 +8,7 @@ import lombok.RequiredArgsConstructor;
 import java.util.UUID;
 
 @RequiredArgsConstructor
-public class UpdateCustomerUserCase {
+public class UpdateCustomerOfCoordinatedUserCase {
     private final CustomerRepository customerRepository;
     //private final GadgetEventPublisher gadgetEventPublisher;
 
@@ -16,10 +16,7 @@ public class UpdateCustomerUserCase {
         Customer customerToUpdate = customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer ID=[" + id + "] don't exists"));
 
-        customerToUpdate = Customer.builder()
-                .numTelephone(customer.getNumTelephone())
-                .email(customer.getEmail())
-                .build();
+        customerToUpdate.updateCustomerOfCoordinated(customer.getNumTelephone(), customer.getEmail(), customer.getAddress(), customer.getNationality(), customer.getLanguage());
 
         Customer customerUpdated = customerRepository.save(customerToUpdate);
         //gadgetEventPublisher.publishGadgetUpdatingEvent(new GadgetUpdatingEvent(id));

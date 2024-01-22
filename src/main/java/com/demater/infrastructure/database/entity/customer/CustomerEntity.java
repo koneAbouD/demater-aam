@@ -1,9 +1,17 @@
 package com.demater.infrastructure.database.entity.customer;
 
+import com.demater.core.domain.customer.ELevelStudent;
+import com.demater.core.domain.customer.Language;
+import com.demater.core.domain.customer.LegalCapacity;
+import com.demater.core.domain.customer.Nationality;
 import com.demater.core.domain.profession.Profession;
+import com.demater.core.domain.reference.Address;
 import com.demater.infrastructure.database.entity.CustomAuditAbstract;
+import com.demater.infrastructure.database.entity.account.AccountTypeEntity;
 import com.demater.infrastructure.database.entity.profession.ProfessionEntity;
+import com.demater.infrastructure.database.entity.reference.AddressEntity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UuidGenerator;
@@ -32,6 +40,36 @@ public class CustomerEntity extends CustomAuditAbstract {
     private String firstName;
     private String lastNames;
     private String matherFullNames;
+    private String numTelephone;
+    private String email;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "nationality_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private NationalityEntity nationality;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "language_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private LanguageEntity language;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "address_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private AddressEntity address;
+
+    @Enumerated(EnumType.STRING)
+    private ELevelStudent levelStudent;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "legal_capacity_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private LegalCapacityEntity legalCapacity;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "customer_type_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private CustomerTypeEntity type;
 
     @ManyToMany(fetch = EAGER,cascade=CascadeType.ALL)
     @JoinTable(name = "customer_profession",

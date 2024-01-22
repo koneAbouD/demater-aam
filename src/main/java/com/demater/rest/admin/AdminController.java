@@ -8,7 +8,6 @@ import com.demater.rest.admin.out.AccountTypeDetailOut;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demater.core.domain.user.User;
 import com.demater.rest.admin.in.UpdateUserByAdminIn;
-import com.demater.rest.admin.out.UserDetailByAdminOut;
 import com.demater.rest.auth.in.UserCreateIn;
 import com.demater.rest.common.out.UserOut;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,27 +46,6 @@ public class AdminController {
         User user = objectMapper.convertValue(userCreateIn, User.class);
         user = createUser.execute(user);
         return new ResponseEntity<>(objectMapper.convertValue(user, UserOut.class), CREATED);
-    }
-
-    @GetMapping("/users")
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
-    @Operation(summary = "Get all users by admin")
-    public ResponseEntity<List<UserDetailByAdminOut>> getAllUsersDetails() {
-        List<User> users = getAllUserDetails.execute();
-        List<UserDetailByAdminOut> results = users.stream()
-                .map(u -> objectMapper.convertValue(u, UserDetailByAdminOut.class))
-                .toList();
-        return new ResponseEntity<>(results, OK);
-    }
-
-    @PutMapping(value = "/users/{login}", consumes = APPLICATION_JSON_VALUE)
-    @PreAuthorize("hasAnyRole('ROLE_SUPER_ADMIN', 'ROLE_ADMIN')")
-    @Operation(summary = "User updating by the admin or super admin")
-    public ResponseEntity<UserDetailByAdminOut> updateUserByAdmin(@PathVariable String login,
-                                                                  @Validated @RequestBody UpdateUserByAdminIn request) {
-        User user = objectMapper.convertValue(request, User.class);
-        User userUpdated = updateUser.execute(login, user);
-        return new ResponseEntity<>(objectMapper.convertValue(userUpdated, UserDetailByAdminOut.class), OK);
     }
 
     @DeleteMapping("/users/{login}")

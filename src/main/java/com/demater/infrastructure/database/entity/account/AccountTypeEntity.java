@@ -1,7 +1,6 @@
 package com.demater.infrastructure.database.entity.account;
 
-import com.demater.infrastructure.database.entity.CodeNameAbstract;
-import com.demater.infrastructure.database.entity.CustomAuditAbstract;
+import com.demater.infrastructure.database.entity.CodeNameAbstractEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -14,7 +13,7 @@ import lombok.*;
 @Entity
 @Table(name = AccountTypeEntity.TABLE_NAME)
 @Access(AccessType.FIELD)
-public class AccountTypeEntity extends CodeNameAbstract {
+public class AccountTypeEntity extends CodeNameAbstractEntity {
     public static final String TABLE_NAME = "account_type";
 
     public static final String ID = "_id";

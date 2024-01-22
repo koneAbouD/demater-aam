@@ -1,6 +1,6 @@
 package com.demater.infrastructure.database.entity.customer;
 
-import com.demater.infrastructure.database.entity.CodeNameAbstract;
+import com.demater.infrastructure.database.entity.CodeNameAbstractEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,7 +13,7 @@ import lombok.*;
 @Entity
 @Table(name = CustomerTypeEntity.TABLE_NAME)
 @Access(AccessType.FIELD)
-public class CustomerTypeEntity extends CodeNameAbstract {
+public class CustomerTypeEntity extends CodeNameAbstractEntity {
     public static final String TABLE_NAME = "customer_type";
 
     public static final String ID = "_id";
@@ -26,13 +26,4 @@ public class CustomerTypeEntity extends CodeNameAbstract {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    public CustomerTypeEntity(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
-
-    public void update(String code,String name) {
-        this.code = code;
-        this.name = name;
-    }
 }

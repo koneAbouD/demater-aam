@@ -1,6 +1,7 @@
 package com.demater.core.domain.account;
 
-import com.demater.core.domain.gadget.GadgetType;
+import com.demater.core.domain.customer.LegalCapacity;
+import com.demater.core.domain.profession.Profession;
 import com.demater.core.domain.user.Branch;
 import com.demater.core.domain.customer.Customer;
 import com.demater.core.domain.document.Document;
@@ -30,18 +31,19 @@ public class Account {
     private boolean checkCIP;
     private String levelRisque;
 
-    public void createWithAccountInfos(AccountType type, Customer customer, String motif){
+    public void createAccount(AccountType type, Customer customer, String motif){
         this.type = type;
         this.customer = customer;
         this.motif = motif;
     }
-    public void updateWithCustomerInfos(
-            Customer customer,
-            Set<Customer> coOwners) {
-        this.customer = customer;
-        this.coOwners = coOwners;
-    }
+
     public String type() {
-        return getType().getName();
+        return type.getName();
+    }
+    public Set<Profession> profetion(){
+        return customer.getProfession();
+    }
+    public LegalCapacity legalCapacity(){
+        return customer.getLegalCapacity();
     }
 }
