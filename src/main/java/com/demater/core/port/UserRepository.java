@@ -16,5 +16,4 @@ public interface UserRepository {
     Set<User> findByLoginIn(Set<String> logins);
     void delete(UUID uuid);
     List<User> findAll();
-    void updateUsersStation(Set<String> usersLogin, UUID stationId);
 }

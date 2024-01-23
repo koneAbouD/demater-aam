@@ -2,9 +2,7 @@ package com.demater.infrastructure.database.repository;
 
 import com.demater.infrastructure.database.entity.user.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
 import java.util.Set;
@@ -18,7 +16,4 @@ public interface JpaUserRepository extends JpaRepository<UserEntity, UUID> {
     Optional<UserEntity> findByEmailAndConfirmationToken(String email, String token);
     Set<UserEntity> findByLoginIn(Set<String> logins);
 
-    @Modifying
-    @Query(value = "UPDATE users SET station_id = :stationId WHERE login IN (:usersLogin)", nativeQuery = true)
-    void updateUsersStation(@Param("usersLogin") Set<String> usersLogin, @Param("stationId") UUID stationId);
 }

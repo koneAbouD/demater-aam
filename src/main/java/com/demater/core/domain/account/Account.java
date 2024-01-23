@@ -41,7 +41,7 @@ public class Account {
         return type.getName();
     }
     public Set<Profession> profetion(){
-        return customer.getProfession();
+        return customer.getProfessions();
     }
     public LegalCapacity legalCapacity(){
         return customer.getLegalCapacity();

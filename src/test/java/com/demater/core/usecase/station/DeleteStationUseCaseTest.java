@@ -3,8 +3,6 @@ package com.demater.core.usecase.station;
 import com.demater.builder.StationMB;
 import com.demater.core.domain.station.Station;
 import com.demater.core.event.station.StationDeletingEvent;
-import com.demater.core.port.StationDeleteTime;
-import com.demater.core.port.StationRepository;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.usecase.station.exception.StationNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

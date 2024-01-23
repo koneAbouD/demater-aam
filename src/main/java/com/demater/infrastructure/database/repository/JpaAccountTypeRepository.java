@@ -1,7 +1,6 @@
 package com.demater.infrastructure.database.repository;
 
 import com.demater.infrastructure.database.entity.account.AccountTypeEntity;
-import com.demater.infrastructure.database.entity.gadget.GadgetTypeEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

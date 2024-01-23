@@ -30,7 +30,7 @@ public class CreateAccountUseCase {
 
         Customer customer = Customer.builder()
                 .type(customerType)
-                .profession(account.profetion())
+                .professions(account.profetion())
                 .legalCapacity(account.legalCapacity())
                 .build();
 

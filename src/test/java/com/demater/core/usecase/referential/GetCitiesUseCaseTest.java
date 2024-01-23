@@ -1,7 +1,6 @@
 package com.demater.core.usecase.referential;
 
 import com.demater.core.domain.referential.City;
-import com.demater.core.port.CityRepository;
 import com.demater.core.publisher.CityEventPublisher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -2,7 +2,6 @@ package com.demater.core.usecase.station;
 
 import com.demater.builder.StationMB;
 import com.demater.core.domain.station.Station;
-import com.demater.core.port.StationRepository;
 import com.demater.core.publisher.StationEventPublisher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -7,7 +7,6 @@ import com.demater.core.domain.gadget.GadgetType;
 import com.demater.core.domain.referential.City;
 import com.demater.core.domain.station.Station;
 import com.demater.core.domain.station.StationGadget;
-import com.demater.core.port.GadgetConfirmationRepository;
 import com.demater.core.publisher.StationEventPublisher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

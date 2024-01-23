@@ -72,10 +72,4 @@ public class PostgresqlUserRepository implements UserRepository {
                 .map(u -> objectMapper.convertValue(u, User.class))
                 .toList();
     }
-
-    @Transactional
-    @Override
-    public void updateUsersStation(Set<String> usersLogin, UUID stationId) {
-        userRepository.updateUsersStation(usersLogin, stationId);
-    }
 }

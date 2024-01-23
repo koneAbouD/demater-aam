@@ -2,7 +2,6 @@ package com.demater.core.usecase.gadget;
 
 import com.demater.builder.GadgetTypeMB;
 import com.demater.core.domain.gadget.GadgetType;
-import com.demater.core.port.GadgetTypeRepository;
 import com.demater.core.publisher.GadgetEventPublisher;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

@@ -25,8 +25,8 @@ public class PostgresqlAccountTypeRepository implements AccountTypeRepository {
     @Override
     public AccountType save(AccountType accountType) {
         AccountTypeEntity accountTypeToSave = objectMapper.convertValue(accountType, AccountTypeEntity.class);
-        AccountTypeEntity AccountTypeEntitySaved = accountTypeRepository.save(accountTypeToSave);
-        return objectMapper.convertValue(AccountTypeEntitySaved, AccountType.class);
+        AccountTypeEntity accountTypeEntitySaved = accountTypeRepository.save(accountTypeToSave);
+        return objectMapper.convertValue(accountTypeEntitySaved, AccountType.class);
     }
 
     @Override
@@ -37,8 +37,8 @@ public class PostgresqlAccountTypeRepository implements AccountTypeRepository {
 
     @Override
     public void delete(AccountType accountType) {
-        AccountTypeEntity AccountTypeToDelete = objectMapper.convertValue(accountType, AccountTypeEntity.class);
-        accountTypeRepository.delete(AccountTypeToDelete);
+        AccountTypeEntity accountTypeToDelete = objectMapper.convertValue(accountType, AccountTypeEntity.class);
+        accountTypeRepository.delete(accountTypeToDelete);
     }
 
     @Override

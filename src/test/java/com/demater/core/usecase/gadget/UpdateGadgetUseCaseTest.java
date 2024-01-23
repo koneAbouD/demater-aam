@@ -5,8 +5,6 @@ import com.demater.builder.GadgetTypeMB;
 import com.demater.core.domain.gadget.Gadget;
 import com.demater.core.domain.gadget.GadgetType;
 import com.demater.core.event.gadget.GadgetUpdatingEvent;
-import com.demater.core.port.GadgetRepository;
-import com.demater.core.port.GadgetTypeRepository;
 import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.usecase.gadget.exception.GadgetAlreadyExistsException;
 import com.demater.core.usecase.gadget.exception.GadgetNotFoundException;

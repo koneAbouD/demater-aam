@@ -6,8 +6,6 @@ import com.demater.core.exception.CityNotFoundException;
 import com.demater.core.domain.referential.City;
 import com.demater.core.domain.station.Station;
 import com.demater.core.event.station.StationCreatingEvent;
-import com.demater.core.port.CityRepository;
-import com.demater.core.port.StationRepository;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.usecase.station.exception.StationAlreadyExistsException;
 import org.junit.jupiter.api.BeforeEach;

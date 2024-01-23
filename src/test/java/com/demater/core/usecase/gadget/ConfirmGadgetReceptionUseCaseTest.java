@@ -9,7 +9,6 @@ import com.demater.core.domain.gadget.GadgetConfirmation;
 import com.demater.core.domain.station.StationGadget;
 import com.demater.core.domain.user.User;
 import com.demater.core.event.gadget.GadgetConfirmationEvent;
-import com.demater.core.port.GadgetConfirmationRepository;
 import com.demater.core.port.UserRepository;
 import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.usecase.common.exception.UserNotFoundException;

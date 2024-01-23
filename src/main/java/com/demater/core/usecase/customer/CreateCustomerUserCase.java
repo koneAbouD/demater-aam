@@ -17,7 +17,7 @@ public class CreateCustomerUserCase {
         Customer customerToSave = customerRepository.findById(id)
                 .orElseThrow(() -> new CustomerNotFoundException("Customer ID=[" + id + "] don't exists"));
 
-        customerToSave.createCustomer(customer.getFirstName(), customer.getLastNames(), customer.getMatherFullNames());
+        customerToSave.create(customer.getFirstName(), customer.getLastNames(), customer.getMatherFullNames());
         Customer customerSaved = customerRepository.save(customerToSave);
         //gadgetEventPublisher.publishGadgetUpdatingEvent(new GadgetUpdatingEvent(id));
         return customerSaved;

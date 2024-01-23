@@ -1,22 +1,16 @@
 package com.demater.infrastructure.database.entity.account;
 
-import com.demater.core.domain.customer.Customer;
-import com.demater.core.domain.document.Document;
 import com.demater.core.domain.folder.EStatus;
-import com.demater.core.domain.user.Branch;
 import com.demater.infrastructure.database.entity.CustomAuditAbstract;
 import com.demater.infrastructure.database.entity.customer.CustomerEntity;
 import com.demater.infrastructure.database.entity.document.DocumentEntity;
-import com.demater.infrastructure.database.entity.station.StationEntity;
 import com.demater.infrastructure.database.entity.user.BranchEntity;
-import com.demater.infrastructure.database.entity.user.RoleEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UuidGenerator;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 

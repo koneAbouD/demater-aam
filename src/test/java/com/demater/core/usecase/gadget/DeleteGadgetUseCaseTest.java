@@ -3,7 +3,6 @@ package com.demater.core.usecase.gadget;
 import com.demater.builder.GadgetMB;
 import com.demater.core.domain.gadget.Gadget;
 import com.demater.core.event.gadget.GadgetDeletingEvent;
-import com.demater.core.port.GadgetRepository;
 import com.demater.core.publisher.GadgetEventPublisher;
 import com.demater.core.usecase.gadget.exception.GadgetNotFoundException;
 import org.junit.jupiter.api.BeforeEach;

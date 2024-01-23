@@ -1,7 +1,6 @@
 package com.demater.infrastructure.database.entity.user;
 
 import com.demater.infrastructure.database.entity.CustomAuditAbstract;
-import com.demater.infrastructure.database.entity.station.StationEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
@@ -75,18 +74,6 @@ public class UserEntity extends CustomAuditAbstract {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     @OnDelete(action = NO_ACTION)
     private Set<RoleEntity> roles = new HashSet<>();
-
-    @ManyToMany(fetch = EAGER)
-    @JoinTable(name = "user_position",
-            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "position_id", referencedColumnName = "id"))
-    @OnDelete(action = NO_ACTION)
-    private Set<PositionEntity> positions = new HashSet<>();
-
-    @ManyToOne(fetch = EAGER)
-    @JoinColumn(name = "station_id")
-    @OnDelete(action = NO_ACTION)
-    private StationEntity station;
 
     @Column(name = "is_activate")
     private boolean isActivate;

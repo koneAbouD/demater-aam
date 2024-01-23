@@ -1,6 +1,5 @@
 package com.demater.builder;
 
-import com.demater.infrastructure.database.entity.user.PositionEntity;
 import com.demater.infrastructure.database.entity.user.RoleEntity;
 import com.demater.infrastructure.database.entity.user.UserEntity;
 

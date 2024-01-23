@@ -4,7 +4,6 @@ import com.demater.builder.UserMB;
 import com.demater.core.domain.station.Station;
 import com.demater.core.domain.user.User;
 import com.demater.core.event.station.UserRemovingFromStationEvent;
-import com.demater.core.port.StationRepository;
 import com.demater.core.port.UserRepository;
 import com.demater.core.publisher.StationEventPublisher;
 import com.demater.core.usecase.common.exception.UserNotFoundException;

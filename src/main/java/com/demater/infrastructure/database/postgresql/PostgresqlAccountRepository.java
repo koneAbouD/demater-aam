@@ -1,10 +1,8 @@
 package com.demater.infrastructure.database.postgresql;
 
 import com.demater.core.domain.account.Account;
-import com.demater.core.domain.gadget.Gadget;
 import com.demater.core.port.AccountRepository;
 import com.demater.infrastructure.database.entity.account.AccountEntity;
-import com.demater.infrastructure.database.entity.gadget.GadgetEntity;
 import com.demater.infrastructure.database.repository.JpaAccountRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
