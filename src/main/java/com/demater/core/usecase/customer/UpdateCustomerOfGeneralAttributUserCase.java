@@ -2,7 +2,6 @@ package com.demater.core.usecase.customer;
 
 import com.demater.core.domain.customer.*;
 import com.demater.core.domain.profession.Profession;
-import com.demater.core.domain.reference.Address;
 import com.demater.core.port.CustomerRepository;
 import com.demater.core.port.FamilyStatusRepository;
 import com.demater.core.port.MaritalStatusRepository;
@@ -20,7 +19,6 @@ public class UpdateCustomerOfGeneralAttributUserCase {
     private final ProfessionRepository professionRepository;
     private final MaritalStatusRepository maritalStatusRepository;
     private final FamilyStatusRepository familyStatusRepository;
-    //private final GadgetEventPublisher gadgetEventPublisher;
 
     public Customer execute(UUID id, Customer customer) {
         Customer customerToUpdate = customerRepository.findById(id)
@@ -28,7 +26,6 @@ public class UpdateCustomerOfGeneralAttributUserCase {
 
         loadCustomerNewElements(customerToUpdate, customer);
         Customer customerUpdated = customerRepository.save(customerToUpdate);
-        //gadgetEventPublisher.publishGadgetUpdatingEvent(new GadgetUpdatingEvent(id));
         return customerUpdated;
     }
     private void loadCustomerNewElements(Customer customerToUpdate, Customer customer) {

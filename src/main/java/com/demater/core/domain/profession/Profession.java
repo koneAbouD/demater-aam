@@ -14,15 +14,15 @@ public class Profession {
     private UUID id;
     private String businessKey;
     private String designation;
-    private CatProfessionnelle catProfessionnelle;
+    private CatProfessional catProfessional;
     private LocalDate dateEmbauche;
     private Double salaire;
     private Employer employer;
 
     public String catProfessionnelle() {
-        return getCatProfessionnelle().getName();
+        return getCatProfessional().getName();
     }
     public String professionCode() {
-        return getCatProfessionnelle().getCode();
+        return getCatProfessional().getCode();
     }
 }

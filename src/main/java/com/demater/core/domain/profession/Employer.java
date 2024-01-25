@@ -11,16 +11,16 @@ import java.util.UUID;
 @Setter
 public class Employer {
     private UUID id;
-    private String designation;
+    private String name;
     private String numTelephone;
     private String email;
-    private String adresse;
-    private EmployerType employerType;
+    private String address;
+    private EmployerType type;
 
     public String employerType() {
-        return getEmployerType().getName();
+        return getType().getName();
     }
     public String employerCode() {
-        return getEmployerType().getCode();
+        return getType().getCode();
     }
 }

@@ -27,8 +27,4 @@ public class CountryEntity extends CodeNameAbstractEntity {
     @SequenceGenerator(name = GENERATOR, sequenceName = SEQ, allocationSize = 1)
     @Column(name="id", unique=true, nullable=false)
     private Long id;
-    public CountryEntity(String code, String name){
-        this.code = code;
-        this.name = name;
-    }
 }

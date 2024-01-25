@@ -1,4 +1,4 @@
-package com.demater.core.usecase.account;
+package com.demater.core.usecase.param_value;
 
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.port.AccountTypeRepository;

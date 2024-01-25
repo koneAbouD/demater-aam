@@ -1,13 +1,12 @@
 package com.demater.rest.admin;
 
 import com.demater.core.domain.account.AccountType;
-import com.demater.core.usecase.account.CreateAccountTypeUseCase;
+import com.demater.core.usecase.param_value.CreateAccountTypeUseCase;
 import com.demater.core.usecase.admin.*;
 import com.demater.rest.admin.in.AccountTypeCreateIn;
 import com.demater.rest.admin.out.AccountTypeDetailOut;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.demater.core.domain.user.User;
-import com.demater.rest.admin.in.UpdateUserByAdminIn;
 import com.demater.rest.auth.in.UserCreateIn;
 import com.demater.rest.common.out.UserOut;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,11 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 import static org.springframework.http.HttpStatus.CREATED;
-import static org.springframework.http.HttpStatus.OK;
-import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 @Tags(value = {
         @Tag(name = "Administration", description = "Provides Admin operations API's")

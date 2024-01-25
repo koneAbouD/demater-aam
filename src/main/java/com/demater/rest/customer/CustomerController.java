@@ -7,7 +7,7 @@ import com.demater.core.usecase.customer.UpdateCustomerOfGeneralAttributUserCase
 import com.demater.rest.customer.in.CustomerCoordinatedIn;
 import com.demater.rest.customer.in.CustomerGeneralAttributesIn;
 import com.demater.rest.customer.in.CustomerCreateIn;
-import com.demater.rest.customer.out.CustomerOut;
+import com.demater.rest.common.out.CustomerOut;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -22,7 +22,7 @@ import java.util.UUID;
 import static org.springframework.http.HttpStatus.OK;
 
 @Tags(value = {
-        @Tag(name = "Customer", description = "Provides customer operations API's")
+        @Tag(name = "Customer", description = "Provides customer operations APIs")
 })
 @RestController
 @RequestMapping("customer")

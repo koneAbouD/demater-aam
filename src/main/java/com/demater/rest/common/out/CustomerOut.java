@@ -1,4 +1,4 @@
-package com.demater.rest.customer.out;
+package com.demater.rest.common.out;
 
 import com.demater.core.domain.customer.*;
 import com.demater.core.domain.profession.Profession;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public record CustomerOut(
         UUID id,
-        CustomerType type,
+        CodeNameOut type,
         String firstName,
         String lastNames,
         String numTelephone,

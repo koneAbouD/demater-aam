@@ -1,4 +1,4 @@
-package com.demater.core.usecase.account;
+package com.demater.core.usecase.param_value;
 
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.port.AccountTypeRepository;
@@ -15,7 +15,7 @@ public class CreateAccountTypeUseCase {
             throw new AccountTypeAlreadyExistsException("Account type [" + accountType.getName() + "] already exists");
         }
 
-        AccountType accountTypeToSave = accountTypeRepository.save(new AccountType());
+        AccountType accountTypeToSave = accountTypeRepository.save(accountType);
         //accountEventPublisher.publishAccountTypeCreatingEvent(new AccountTypeCreatingEvent(name));
         return accountTypeToSave;
     }

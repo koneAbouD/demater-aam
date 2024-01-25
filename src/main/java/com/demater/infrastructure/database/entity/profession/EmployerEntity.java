@@ -1,5 +1,7 @@
 package com.demater.infrastructure.database.entity.profession;
 
+import com.demater.core.domain.profession.EmployerType;
+import com.demater.infrastructure.database.entity.customer.CustomerTypeEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -18,19 +20,20 @@ import static org.hibernate.annotations.UuidGenerator.Style.TIME;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = ProfessionEntity.TABLE_NAME)
+@Table(name = EmployerEntity.TABLE_NAME)
 @Access(AccessType.FIELD)
-public class ProfessionEntity {
-    public static final String TABLE_NAME = "profession";
+public class EmployerEntity {
+    public static final String TABLE_NAME = "employer";
 
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
-    private String businessKey;
-    private String designation;
-    @NotNull(message = "The professional categorie can't be null")
-    @ManyToOne(fetch = EAGER, optional = false)
-    @JoinColumn(name = "categorie_professionnelle_id", nullable = false)
+    private String name;
+    private String numTelephone;
+    private String email;
+    private String address;
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "employer_type_id", nullable = true)
     @OnDelete(action = NO_ACTION)
-    private CatProfessionalEntity catProfessionnelle;
+    private EmployerTypeEntity type;
 }

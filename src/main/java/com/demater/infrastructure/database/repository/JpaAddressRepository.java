@@ -10,6 +10,6 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaAddressRepository extends JpaRepository<AddressEntity, UUID> {
-    @Query(nativeQuery = true, value = "SELECT * FROM address at WHERE at.id = :id")
+    @Query(nativeQuery = true, value = "SELECT * FROM address ad WHERE ad.id = :id")
     Optional<AddressEntity> findById(@Param("id") UUID id);
 }

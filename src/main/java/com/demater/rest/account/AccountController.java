@@ -3,7 +3,7 @@ package com.demater.rest.account;
 import com.demater.core.domain.account.Account;
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.usecase.account.CreateAccountUseCase;
-import com.demater.core.usecase.account.GetAllAccountTypeUseCase;
+import com.demater.core.usecase.param_value.GetAllAccountTypeUseCase;
 import com.demater.core.usecase.account.GetAllAccountsUseCase;
 import com.demater.rest.account.in.AccountCreateIn;
 import com.demater.rest.account.out.AccountOut;
@@ -18,13 +18,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 import static org.springframework.http.HttpStatus.CREATED;
 import static org.springframework.http.HttpStatus.OK;
 
 @Tags(value = {
-        @Tag(name = "Account", description = "Provides account operations API's")
+        @Tag(name = "Account", description = "Provides account operations APIs")
 })
 @RestController
 @RequestMapping("account")
@@ -45,7 +44,7 @@ public class AccountController {
         return new ResponseEntity<>(results, OK);
     }
     @PostMapping
-    @Operation(summary = "Creating account with account informations")
+    @Operation(summary = "Creating account with account information")
     public ResponseEntity<AccountOut> createAccount(@Validated @RequestBody AccountCreateIn request) {
         Account account = objectMapper.convertValue(request, Account.class);
         Account accountSaved = createAccount.execute(account);

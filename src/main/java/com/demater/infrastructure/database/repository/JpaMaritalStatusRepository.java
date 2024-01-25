@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface JpaMaritalStatusRepository extends JpaRepository<MaritalStatusEntity, Long> {
-    @Query(nativeQuery = true, value = "SELECT * FROM marital_status at WHERE at.id = :id")
+    @Query(nativeQuery = true, value = "SELECT * FROM marital_status mt WHERE mt.id = :id")
     Optional<MaritalStatusEntity> findById(@Param("id") Long id);
     boolean existsByNameIgnoreCase(String name);
 }

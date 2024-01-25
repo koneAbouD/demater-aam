@@ -9,6 +9,5 @@ public record UserDetailsOut(
     String firstName,
     String lastName,
     String email,
-    Set<RoleOut> roles,
-    Set<PositionOut> positions)
+    Set<RoleOut> roles)
 {}

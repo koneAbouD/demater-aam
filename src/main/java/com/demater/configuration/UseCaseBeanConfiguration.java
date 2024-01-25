@@ -15,6 +15,7 @@ import com.demater.core.usecase.auth.SendResetPasswordUseCase;
 import com.demater.core.usecase.customer.CreateCustomerUserCase;
 import com.demater.core.usecase.customer.UpdateCustomerOfCoordinatedUserCase;
 import com.demater.core.usecase.customer.UpdateCustomerOfGeneralAttributUserCase;
+import com.demater.core.usecase.param_value.*;
 import com.demater.core.usecase.user.GetAllRolesUseCase;
 import com.demater.core.usecase.user.GetUserDetailsUseCase;
 import com.demater.core.usecase.user.UpdateUserPasswordUseCase;
@@ -24,25 +25,71 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class UseCaseBeanConfiguration {
-
     @Bean
-    public UpdateCustomerOfGeneralAttributUserCase updateCustomerOfGeneralAttributUserCase(CustomerRepository customerRepository, ProfessionRepository professionRepository, MaritalStatusRepository maritalStatusRepository, FamilyStatusRepository familyStatusRepository) {
-        return new UpdateCustomerOfGeneralAttributUserCase(customerRepository, professionRepository, maritalStatusRepository, familyStatusRepository);
+    public GetAllLegalCapacityUseCase getAllLegalCapacityUseCase(LegalCapacityRepository legalCapacityRepository) {
+        return new GetAllLegalCapacityUseCase(legalCapacityRepository);
     }
     @Bean
-    public UpdateCustomerOfCoordinatedUserCase updateCustomerOfCoordinatedUserCase(CustomerRepository customerRepository, NationalityRepository nationalityRepository, LanguageRepository languageRepository, AddressRepository addressRepository) {
-        return new UpdateCustomerOfCoordinatedUserCase(customerRepository, nationalityRepository, languageRepository, addressRepository);
+    public GetAllEmployerTypeUseCase getAllEmployerTypeUseCase(EmployerTypeRepository employerTypeRepository) {
+        return new GetAllEmployerTypeUseCase(employerTypeRepository);
+    }
+    @Bean
+    public GetAllCustomerTypeUseCase getAllCustomerTypeUseCase(CustomerTypeRepository customerTypeRepository) {
+        return new GetAllCustomerTypeUseCase(customerTypeRepository);
+    }
+    @Bean
+    public GetAllCatProfessionalUseCase getAllCatProfessionalUseCase(CatProfessionalRepository catProfessionalRepository) {
+        return new GetAllCatProfessionalUseCase(catProfessionalRepository);
+    }
+    @Bean
+    public CreateLegalCapacityUseCase createLegalCapacityUseCase(LegalCapacityRepository legalCapacityRepository) {
+        return new CreateLegalCapacityUseCase(legalCapacityRepository);
+    }
+    @Bean
+    public CreateEmployerTypeUseCase employerTypeRepository(EmployerTypeRepository employerTypeRepository) {
+        return new CreateEmployerTypeUseCase(employerTypeRepository);
+    }
+    @Bean
+    public CreateCustomerTypeUseCase createCustomerTypeUseCase(CustomerTypeRepository customerTypeRepository) {
+        return new CreateCustomerTypeUseCase(customerTypeRepository);
+    }
+    @Bean
+    public CreateCatProfessionalUseCase createCatProfessionalUseCase(CatProfessionalRepository catProfessionalRepository) {
+        return new CreateCatProfessionalUseCase(catProfessionalRepository);
+    }
+    @Bean
+    public UpdateCustomerOfGeneralAttributUserCase updateCustomerOfGeneralAttributUserCase(CustomerRepository customerRepository,
+                                                                                           ProfessionRepository professionRepository,
+                                                                                           MaritalStatusRepository maritalStatusRepository,
+                                                                                           FamilyStatusRepository familyStatusRepository) {
+        return new UpdateCustomerOfGeneralAttributUserCase(customerRepository,
+                professionRepository,
+                maritalStatusRepository,
+                familyStatusRepository);
+    }
+    @Bean
+    public UpdateCustomerOfCoordinatedUserCase updateCustomerOfCoordinatedUserCase(CustomerRepository customerRepository,
+                                                                                   NationalityRepository nationalityRepository,
+                                                                                   LanguageRepository languageRepository,
+                                                                                   AddressRepository addressRepository) {
+        return new UpdateCustomerOfCoordinatedUserCase(customerRepository,
+                nationalityRepository,
+                languageRepository,
+                addressRepository);
     }
     @Bean
     public CreateCustomerUserCase createCustomerUserCase(CustomerRepository customerRepository) {
         return new CreateCustomerUserCase(customerRepository);
     }
     @Bean
-    public GetAllAccountsUseCase getAllAccountsUseCase(AccountRepository accountRepository, AccountEventPublisher accountEventPublisher) {
+    public GetAllAccountsUseCase getAllAccountsUseCase(AccountRepository accountRepository,
+                                                       AccountEventPublisher accountEventPublisher) {
         return new GetAllAccountsUseCase(accountRepository, accountEventPublisher);
     }
     @Bean
-    public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository, AccountTypeRepository accountTypeRepository, CustomerTypeRepository customerTypeRepository) {
+    public CreateAccountUseCase createAccountUseCase(AccountRepository accountRepository,
+                                                     AccountTypeRepository accountTypeRepository,
+                                                     CustomerTypeRepository customerTypeRepository) {
         return new CreateAccountUseCase(accountRepository, accountTypeRepository, customerTypeRepository);
     }
     @Bean
@@ -54,7 +101,8 @@ public class UseCaseBeanConfiguration {
         return new CreateAccountTypeUseCase(accountTypeRepository);
     }
     @Bean
-    public DeleteUserUseCase getDeleteUserUseCase(UserRepository userRepository, UserEventPublisher userEventPublisher) {
+    public DeleteUserUseCase getDeleteUserUseCase(UserRepository userRepository,
+                                                  UserEventPublisher userEventPublisher) {
         return new DeleteUserUseCase(userRepository, userEventPublisher);
     }
 
@@ -72,7 +120,8 @@ public class UseCaseBeanConfiguration {
     }
 
     @Bean
-    public CheckUserUseCase getCheckUserUseCase(UserRepository userRepository, AuthEventPublisher authEventPublisher) {
+    public CheckUserUseCase getCheckUserUseCase(UserRepository userRepository,
+                                                AuthEventPublisher authEventPublisher) {
         return new CheckUserUseCase(userRepository, authEventPublisher);
     }
 
@@ -115,7 +164,8 @@ public class UseCaseBeanConfiguration {
     }
 
     @Bean
-    public GetAllRolesUseCase getAllRolesUseCase(RoleRepository roleRepository, RoleEventPublisher roleEventPublisher) {
+    public GetAllRolesUseCase getAllRolesUseCase(RoleRepository roleRepository,
+                                                 RoleEventPublisher roleEventPublisher) {
         return new GetAllRolesUseCase(roleRepository, roleEventPublisher);
     }
 

@@ -1,6 +1,6 @@
 package com.demater.rest.account.in;
 
-import com.demater.core.domain.profession.CatProfessionnelle;
+import com.demater.core.domain.profession.CatProfessional;
 
-public record ProfessionIn(CatProfessionnelle catProfessionnelle) {
+public record ProfessionIn(CatProfessional catProfessional) {
 }

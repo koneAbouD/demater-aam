@@ -11,9 +11,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface JpaProfessionRepository extends JpaRepository<ProfessionEntity, UUID> {
-    @Query(nativeQuery = true, value = "SELECT * FROM profession at WHERE at.id = :id")
+    @Query(nativeQuery = true, value = "SELECT * FROM profession pr WHERE pr.id = :id")
     Optional<ProfessionEntity> findById(@Param("id") UUID id);
 
-    @Query(nativeQuery = true, value = "SELECT DISTINCT * FROM profession s WHERE s.id IN :ids")
+    @Query(nativeQuery = true, value = "SELECT DISTINCT * FROM profession pr WHERE pr.id IN :ids")
     List<ProfessionEntity> findAllByIdsIn(@Param("ids") List<UUID> ids);
 }

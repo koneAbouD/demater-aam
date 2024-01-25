@@ -11,10 +11,10 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = CatProfessionnelleEntity.TABLE_NAME)
+@Table(name = CatProfessionalEntity.TABLE_NAME)
 @Access(AccessType.FIELD)
-public class CatProfessionnelleEntity extends CodeNameAbstractEntity {
-    public static final String TABLE_NAME = "categorie_professionnelle";
+public class CatProfessionalEntity extends CodeNameAbstractEntity {
+    public static final String TABLE_NAME = "category_professional";
 
     public static final String ID = "_id";
     public static final String SEQ = TABLE_NAME + ID + "_seq";
@@ -26,13 +26,4 @@ public class CatProfessionnelleEntity extends CodeNameAbstractEntity {
     @Column(name="id", unique=true, nullable=false)
     private Long id;
 
-    public CatProfessionnelleEntity(String code, String name) {
-        this.code = code;
-        this.name = name;
-    }
-
-    public void update(String code,String name) {
-        this.code = code;
-        this.name = name;
-    }
 }

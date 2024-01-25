@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface JpaLanguageRepository extends JpaRepository<LanguageEntity, Long> {
-    @Query(nativeQuery = true, value = "SELECT * FROM language at WHERE at.id = :id")
+    @Query(nativeQuery = true, value = "SELECT * FROM language la WHERE la.id = :id")
     Optional<LanguageEntity> findById(@Param("id") Long id);
     boolean existsByNameIgnoreCase(String name);
 }

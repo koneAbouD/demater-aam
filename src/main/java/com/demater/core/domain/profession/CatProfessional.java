@@ -9,6 +9,6 @@ import lombok.*;
 @Getter
 @Setter
 @EqualsAndHashCode
-public class CatProfessionnelle extends CodeNameAbstract {
+public class CatProfessional extends CodeNameAbstract {
     private Long id;
 }

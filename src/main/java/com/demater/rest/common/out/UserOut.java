@@ -10,7 +10,6 @@ public record UserOut(
     String firstName,
     String lastName,
     String email,
-    Set<PositionOut> positions,
     Set<RoleOut> roles,
     boolean isActivate
 ){}

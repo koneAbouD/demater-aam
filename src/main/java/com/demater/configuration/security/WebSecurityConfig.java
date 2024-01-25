@@ -78,6 +78,7 @@ public class WebSecurityConfig implements WebMvcConfigurer {
                         "/gadgets/types",
                         "/account/**",
                         "/customer/**",
+                        "/param/**",
                         "/admin/**"
                         )
                 .permitAll().and()
