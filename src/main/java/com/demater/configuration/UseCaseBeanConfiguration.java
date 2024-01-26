@@ -26,6 +26,30 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class UseCaseBeanConfiguration {
     @Bean
+    public GetAllMaritalStatusUseCase getAllMaritalStatusUseCase(MaritalStatusRepository maritalStatusRepository) {
+        return new GetAllMaritalStatusUseCase(maritalStatusRepository);
+    }
+    @Bean
+    public CreateMaritalStatusUseCase createMaritalStatusUseCase(MaritalStatusRepository maritalStatusRepository) {
+        return new CreateMaritalStatusUseCase(maritalStatusRepository);
+    }
+    @Bean
+    public GetAllFamilyStatusUseCase getAllFamilyStatusUseCase(FamilyStatusRepository familyStatusRepository) {
+        return new GetAllFamilyStatusUseCase(familyStatusRepository);
+    }
+    @Bean
+    public CreateFamilyStatusUseCase createFamilyStatusUseCase(FamilyStatusRepository familyStatusRepository) {
+        return new CreateFamilyStatusUseCase(familyStatusRepository);
+    }
+    @Bean
+    public CreateCountryUseCase createCountryUseCase(CountryRepository countryRepository) {
+        return new CreateCountryUseCase(countryRepository);
+    }
+    @Bean
+    public GetAllCountryUseCase getAllCountryUseCase(CountryRepository countryRepository) {
+        return new GetAllCountryUseCase(countryRepository);
+    }
+    @Bean
     public GetAllLegalCapacityUseCase getAllLegalCapacityUseCase(LegalCapacityRepository legalCapacityRepository) {
         return new GetAllLegalCapacityUseCase(legalCapacityRepository);
     }

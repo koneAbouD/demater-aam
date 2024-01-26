@@ -2,9 +2,12 @@ package com.demater.rest.param_value;
 
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.domain.customer.CustomerType;
+import com.demater.core.domain.customer.FamilyStatus;
 import com.demater.core.domain.customer.LegalCapacity;
+import com.demater.core.domain.customer.MaritalStatus;
 import com.demater.core.domain.profession.CatProfessional;
 import com.demater.core.domain.profession.EmployerType;
+import com.demater.core.domain.reference.Country;
 import com.demater.core.usecase.param_value.*;
 import com.demater.rest.account.out.AccountTypeOut;
 import com.demater.rest.common.in.CodeNameIn;
@@ -40,6 +43,12 @@ public class ParamController {
     private final CreateCatProfessionalUseCase createCatProfessional;
     private final GetAllEmployerTypeUseCase getAllEmployerType;
     private final CreateEmployerTypeUseCase createEmployerType;
+    private final CreateFamilyStatusUseCase createFamilyStatus;
+    private final GetAllFamilyStatusUseCase getAllFamilyStatus;
+    private final CreateMaritalStatusUseCase createMaritalStatus;
+    private final GetAllMaritalStatusUseCase getAllMaritalStatus;
+    private final CreateCountryUseCase createCountry;
+    private final GetAllCountryUseCase getAllCountry;
     private final ObjectMapper objectMapper;
 
     @PostMapping("/account-type")
@@ -58,7 +67,6 @@ public class ParamController {
                 .toList();
         return new ResponseEntity<>(results, OK);
     }
-
     @PostMapping("/customer-type")
     @Operation(summary = "Creating customer type")
     public ResponseEntity<CodeNameOut> createCustomerType(@Validated @RequestBody CodeNameIn request) {
@@ -75,7 +83,6 @@ public class ParamController {
                 .toList();
         return new ResponseEntity<>(results, OK);
     }
-
     @PostMapping("/legal-capacity")
     @Operation(summary = "Creating legal capacity")
     public ResponseEntity<CodeNameOut> createLegalCapacity(@Validated @RequestBody CodeNameIn request) {
@@ -92,7 +99,6 @@ public class ParamController {
                 .toList();
         return new ResponseEntity<>(results, OK);
     }
-
     @PostMapping("/category-professional")
     @Operation(summary = "Creating category professional")
     public ResponseEntity<CodeNameOut> createCatProfessional(@Validated @RequestBody CodeNameIn request) {
@@ -109,7 +115,6 @@ public class ParamController {
                 .toList();
         return new ResponseEntity<>(results, OK);
     }
-
     @PostMapping("/employer-type")
     @Operation(summary = "Creating employer type")
     public ResponseEntity<CodeNameOut> createEmployerType(@Validated @RequestBody CodeNameIn request) {
@@ -122,6 +127,54 @@ public class ParamController {
     public ResponseEntity<List<CodeNameOut>> getAllEmployerType() {
         List<EmployerType> employerTypes = getAllEmployerType.execute();
         List<CodeNameOut> results = employerTypes.stream()
+                .map(e -> objectMapper.convertValue(e, CodeNameOut.class))
+                .toList();
+        return new ResponseEntity<>(results, OK);
+    }
+    @PostMapping("/family-status")
+    @Operation(summary = "Creating family status")
+    public ResponseEntity<CodeNameOut> createFamilyStatus(@Validated @RequestBody CodeNameIn request) {
+        FamilyStatus familyStatus = objectMapper.convertValue(request, FamilyStatus.class);
+        FamilyStatus familyStatusSaved = createFamilyStatus.execute(familyStatus);
+        return new ResponseEntity<>(objectMapper.convertValue(familyStatusSaved, CodeNameOut.class), CREATED);
+    }
+    @GetMapping("/family-status")
+    @Operation(summary = "Getting all family status")
+    public ResponseEntity<List<CodeNameOut>> getAllFamilyStatus() {
+        List<FamilyStatus> familyStatuses = getAllFamilyStatus.execute();
+        List<CodeNameOut> results = familyStatuses.stream()
+                .map(e -> objectMapper.convertValue(e, CodeNameOut.class))
+                .toList();
+        return new ResponseEntity<>(results, OK);
+    }
+    @PostMapping("/marital-status")
+    @Operation(summary = "Creating marital status")
+    public ResponseEntity<CodeNameOut> createMaritalStatus(@Validated @RequestBody CodeNameIn request) {
+        MaritalStatus maritalStatus = objectMapper.convertValue(request, MaritalStatus.class);
+        MaritalStatus maritalStatusSaved = createMaritalStatus.execute(maritalStatus);
+        return new ResponseEntity<>(objectMapper.convertValue(maritalStatusSaved, CodeNameOut.class), CREATED);
+    }
+    @GetMapping("/marital-status")
+    @Operation(summary = "Getting all marital status")
+    public ResponseEntity<List<CodeNameOut>> getAllMaritalStatus() {
+        List<MaritalStatus> maritalStatuses = getAllMaritalStatus.execute();
+        List<CodeNameOut> results = maritalStatuses.stream()
+                .map(e -> objectMapper.convertValue(e, CodeNameOut.class))
+                .toList();
+        return new ResponseEntity<>(results, OK);
+    }
+    @PostMapping("/country")
+    @Operation(summary = "Creating country")
+    public ResponseEntity<CodeNameOut> createCountry(@Validated @RequestBody CodeNameIn request) {
+        Country country = objectMapper.convertValue(request, Country.class);
+        Country countrySaved = createCountry.execute(country);
+        return new ResponseEntity<>(objectMapper.convertValue(countrySaved, CodeNameOut.class), CREATED);
+    }
+    @GetMapping("/country")
+    @Operation(summary = "Getting all country")
+    public ResponseEntity<List<CodeNameOut>> getAllCountry() {
+        List<Country> countries = getAllCountry.execute();
+        List<CodeNameOut> results = countries.stream()
                 .map(e -> objectMapper.convertValue(e, CodeNameOut.class))
                 .toList();
         return new ResponseEntity<>(results, OK);

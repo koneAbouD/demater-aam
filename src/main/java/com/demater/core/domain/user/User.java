@@ -1,7 +1,6 @@
 package com.demater.core.domain.user;
 
 
-import com.demater.core.domain.station.Station;
 import lombok.*;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
@@ -39,7 +38,6 @@ public class User {
     private String passwordGenerated;
     private String passwordEncoded;
     private String token;
-    private Station station;
 
     public User(UUID id,
                 String login,
@@ -57,8 +55,7 @@ public class User {
                 LocalDateTime expirationDate,
                 Date createdTimestamp,
                 String passwordEncoded,
-                String passwordGenerated,
-                Station station) {
+                String passwordGenerated) {
         this.id = id;
         this.login = login;
         this.firstName = firstName;
@@ -77,7 +74,6 @@ public class User {
         this.password = passwordEncoded;
         this.passwordEncoded = passwordEncoded;
         this.passwordGenerated = passwordGenerated;
-        this.station = station;
     }
 
     public void updateUserForCreatingWith(Set<Role> roles,

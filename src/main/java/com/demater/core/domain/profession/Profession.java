@@ -12,14 +12,14 @@ import java.util.UUID;
 @Setter
 public class Profession {
     private UUID id;
-    private String businessKey;
     private String designation;
     private CatProfessional catProfessional;
-    private LocalDate dateEmbauche;
-    private Double salaire;
+    private LocalDate hireDate;
+    private Double income;
+
     private Employer employer;
 
-    public String catProfessionnelle() {
+    public String catProfessional() {
         return getCatProfessional().getName();
     }
     public String professionCode() {

@@ -24,6 +24,10 @@ public class DocumentEntity extends CustomAuditAbstract {
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
+
+    @Column(name="business_key")
     private String businessKey;
+
+    @Column(name="designation")
     private String designation;
 }

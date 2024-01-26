@@ -37,11 +37,24 @@ public class CustomerEntity extends CustomAuditAbstract {
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
+
+    @Column(name="first_name")
     private String firstName;
+
+    @Column(name="last_names")
     private String lastNames;
+
+    @Column(name="mather_full_names")
     private String matherFullNames;
+
+    @Column(name="num_telephone")
     private String numTelephone;
+
+    @Column(name="email")
     private String email;
+
+    @Column(name="code")
+    private String code;
 
     @ManyToOne(fetch = EAGER, optional = true)
     @JoinColumn(name = "nationality_id", nullable = true)
@@ -59,6 +72,7 @@ public class CustomerEntity extends CustomAuditAbstract {
     private AddressEntity address;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "level_student", length = 20, nullable = false)
     private ELevelStudent levelStudent;
 
     @ManyToOne(fetch = EAGER, optional = true)
@@ -71,11 +85,20 @@ public class CustomerEntity extends CustomAuditAbstract {
     @OnDelete(action = NO_ACTION)
     private CustomerTypeEntity type;
 
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "family_status_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private FamilyStatusEntity familyStatus;
+
+    @ManyToOne(fetch = EAGER, optional = true)
+    @JoinColumn(name = "marital_status_id", nullable = true)
+    @OnDelete(action = NO_ACTION)
+    private MaritalStatusEntity maritalStatus;
+
     @ManyToMany(fetch = EAGER,cascade=CascadeType.ALL)
     @JoinTable(name = "customer_profession",
             joinColumns = @JoinColumn(name = "customer_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "profession_id", referencedColumnName = "id"))
     @OnDelete(action = NO_ACTION)
     private Set<ProfessionEntity> profession;
-    private String customerCode;
 }

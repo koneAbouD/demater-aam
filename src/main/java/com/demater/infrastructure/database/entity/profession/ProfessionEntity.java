@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.UuidGenerator;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 import static jakarta.persistence.FetchType.EAGER;
@@ -26,11 +27,24 @@ public class ProfessionEntity {
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
-    private String businessKey;
+
+    @Column(name = "designation")
     private String designation;
-    @NotNull(message = "The professional categorie can't be null")
+
+    @Column(name = "hire_date")
+    private LocalDate hireDate;
+
+    @Column(name = "income")
+    private Double income;
+
+    @NotNull(message = "The professional category can't be null")
     @ManyToOne(fetch = EAGER, optional = false)
-    @JoinColumn(name = "categorie_professionnelle_id", nullable = false)
+    @JoinColumn(name = "category_professional_id", nullable = false)
     @OnDelete(action = NO_ACTION)
-    private CatProfessionalEntity catProfessionnelle;
+    private CatProfessionalEntity catProfessional;
+
+    @ManyToOne(fetch = EAGER, optional = false)
+    @JoinColumn(name = "employer_id", nullable = false)
+    @OnDelete(action = NO_ACTION)
+    private EmployerEntity employer;
 }

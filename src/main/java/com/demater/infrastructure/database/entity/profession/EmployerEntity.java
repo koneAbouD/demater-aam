@@ -28,10 +28,19 @@ public class EmployerEntity {
     @Id
     @UuidGenerator(style = TIME)
     private UUID id;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "num_telephone")
     private String numTelephone;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "address")
     private String address;
+
     @ManyToOne(fetch = EAGER, optional = true)
     @JoinColumn(name = "employer_type_id", nullable = true)
     @OnDelete(action = NO_ACTION)
