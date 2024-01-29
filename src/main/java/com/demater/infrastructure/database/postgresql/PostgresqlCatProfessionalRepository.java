@@ -1,8 +1,8 @@
 package com.demater.infrastructure.database.postgresql;
 
-import com.demater.core.domain.profession.CatProfessional;
+import com.demater.core.domain.profession.ProfessionalCat;
 import com.demater.core.port.CatProfessionalRepository;
-import com.demater.infrastructure.database.entity.profession.CatProfessionalEntity;
+import com.demater.infrastructure.database.entity.profession.ProfessionalCatEntity;
 import com.demater.infrastructure.database.repository.JpaCatProfessionalRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -23,29 +23,29 @@ public class PostgresqlCatProfessionalRepository implements CatProfessionalRepos
     }
 
     @Override
-    public CatProfessional save(CatProfessional catProfessional) {
-        CatProfessionalEntity catProfessionalToSave = objectMapper.convertValue(catProfessional, CatProfessionalEntity.class);
-        CatProfessionalEntity catProfessionalEntitySaved = catProfessionalRepository.save(catProfessionalToSave);
-        return objectMapper.convertValue(catProfessionalEntitySaved, CatProfessional.class);
+    public ProfessionalCat save(ProfessionalCat professionalCat) {
+        ProfessionalCatEntity catProfessionalToSave = objectMapper.convertValue(professionalCat, ProfessionalCatEntity.class);
+        ProfessionalCatEntity professionalCatEntitySaved = catProfessionalRepository.save(catProfessionalToSave);
+        return objectMapper.convertValue(professionalCatEntitySaved, ProfessionalCat.class);
     }
 
     @Override
-    public Optional<CatProfessional> findById(Long id) {
-        Optional<CatProfessionalEntity> catProfessional = catProfessionalRepository.findById(id);
-        return catProfessional.map(g -> objectMapper.convertValue(g, CatProfessional.class));
+    public Optional<ProfessionalCat> findById(Long id) {
+        Optional<ProfessionalCatEntity> catProfessional = catProfessionalRepository.findById(id);
+        return catProfessional.map(g -> objectMapper.convertValue(g, ProfessionalCat.class));
     }
 
     @Override
-    public void delete(CatProfessional catProfessional) {
-        CatProfessionalEntity catProfessionalToDelete = objectMapper.convertValue(catProfessional, CatProfessionalEntity.class);
+    public void delete(ProfessionalCat professionalCat) {
+        ProfessionalCatEntity catProfessionalToDelete = objectMapper.convertValue(professionalCat, ProfessionalCatEntity.class);
         catProfessionalRepository.delete(catProfessionalToDelete);
     }
 
     @Override
-    public List<CatProfessional> findAll() {
+    public List<ProfessionalCat> findAll() {
         return catProfessionalRepository.findAll()
                 .stream()
-                .map(g -> objectMapper.convertValue(g, CatProfessional.class))
+                .map(g -> objectMapper.convertValue(g, ProfessionalCat.class))
                 .toList();
     }
 }

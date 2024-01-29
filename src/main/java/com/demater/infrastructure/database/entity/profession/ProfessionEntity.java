@@ -39,9 +39,9 @@ public class ProfessionEntity {
 
     @NotNull(message = "The professional category can't be null")
     @ManyToOne(fetch = EAGER, optional = false)
-    @JoinColumn(name = "category_professional_id", nullable = false)
+    @JoinColumn(name = "professional_category_id", nullable = false)
     @OnDelete(action = NO_ACTION)
-    private CatProfessionalEntity catProfessional;
+    private ProfessionalCatEntity professionalCat;
 
     @ManyToOne(fetch = EAGER, optional = false)
     @JoinColumn(name = "employer_id", nullable = false)

@@ -30,7 +30,6 @@ import static org.springframework.http.HttpStatus.OK;
 @RequiredArgsConstructor
 public class AccountController {
     private final GetAllAccountsUseCase getAllAccounts;
-    private final GetAllAccountTypeUseCase getAllAccountTypes;
     private final CreateAccountUseCase createAccount;
     private final ObjectMapper objectMapper;
 
@@ -49,14 +48,5 @@ public class AccountController {
         Account account = objectMapper.convertValue(request, Account.class);
         Account accountSaved = createAccount.execute(account);
         return new ResponseEntity<>(objectMapper.convertValue(accountSaved, AccountOut.class), CREATED);
-    }
-    @GetMapping("/types")
-    @Operation(summary = "Getting all account types")
-    public ResponseEntity<List<AccountTypeOut>> getAccountTypes() {
-        List<AccountType> accountTypes = getAllAccountTypes.execute();
-        List<AccountTypeOut> results = accountTypes.stream()
-                .map(r -> objectMapper.convertValue(r, AccountTypeOut.class))
-                .toList();
-        return new ResponseEntity<>(results, OK);
     }
 }

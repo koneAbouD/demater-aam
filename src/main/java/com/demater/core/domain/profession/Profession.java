@@ -13,16 +13,16 @@ import java.util.UUID;
 public class Profession {
     private UUID id;
     private String designation;
-    private CatProfessional catProfessional;
+    private ProfessionalCat professionalCat;
     private LocalDate hireDate;
     private Double income;
 
     private Employer employer;
 
     public String catProfessional() {
-        return getCatProfessional().getName();
+        return getProfessionalCat().getName();
     }
     public String professionCode() {
-        return getCatProfessional().getCode();
+        return getProfessionalCat().getCode();
     }
 }

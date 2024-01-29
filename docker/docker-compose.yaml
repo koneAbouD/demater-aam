@@ -1,0 +1,35 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ../
+      dockerfile: ./docker/Dockerfile
+    container_name: app_aam
+    ports:
+      - "9080:9080"
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/aam
+      - SPRING_DATASOURCE_USERNAME=aam
+      - SPRING_DATASOURCE_PASSWORD=aam
+
+  database:
+    image: 'postgres:12-alpine3.18'
+    container_name: db_aam
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD", "pg_isready" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      - POSTGRES_USER=aam
+      - POSTGRES_PASSWORD=aam
+      - POSTGRES_DB=aam
+    volumes:
+      - ./data:/var/lib/postgresql/data
+

@@ -17,7 +17,7 @@ public class CreateCustomerTypeUseCase {
             throw new AccountTypeAlreadyExistsException("Customer type [" + customerType.getName() + "] already exists");
         }
 
-        CustomerType customerTypeToSave = customerTypeRepository.save(new CustomerType());
+        CustomerType customerTypeToSave = customerTypeRepository.save(customerType);
         //accountEventPublisher.publishAccountTypeCreatingEvent(new AccountTypeCreatingEvent(name));
         return customerTypeToSave;
     }

@@ -5,7 +5,7 @@ import com.demater.core.domain.customer.CustomerType;
 import com.demater.core.domain.customer.FamilyStatus;
 import com.demater.core.domain.customer.LegalCapacity;
 import com.demater.core.domain.customer.MaritalStatus;
-import com.demater.core.domain.profession.CatProfessional;
+import com.demater.core.domain.profession.ProfessionalCat;
 import com.demater.core.domain.profession.EmployerType;
 import com.demater.core.domain.reference.Country;
 import com.demater.core.usecase.param_value.*;
@@ -102,15 +102,15 @@ public class ParamController {
     @PostMapping("/category-professional")
     @Operation(summary = "Creating category professional")
     public ResponseEntity<CodeNameOut> createCatProfessional(@Validated @RequestBody CodeNameIn request) {
-        CatProfessional catProfessional = objectMapper.convertValue(request, CatProfessional.class);
-        CatProfessional catProfessionalSaved = createCatProfessional.execute(catProfessional);
-        return new ResponseEntity<>(objectMapper.convertValue(catProfessionalSaved, CodeNameOut.class), CREATED);
+        ProfessionalCat professionalCat = objectMapper.convertValue(request, ProfessionalCat.class);
+        ProfessionalCat professionalCatSaved = createCatProfessional.execute(professionalCat);
+        return new ResponseEntity<>(objectMapper.convertValue(professionalCatSaved, CodeNameOut.class), CREATED);
     }
     @GetMapping("/category-professionals")
     @Operation(summary = "Getting all category professional")
-    public ResponseEntity<List<CodeNameOut>> getAllCatProfessional() {
-        List<CatProfessional> catProfessionals = getAllCatProfessional.execute();
-        List<CodeNameOut> results = catProfessionals.stream()
+    public ResponseEntity<List<CodeNameOut>> getAllProfessionalCAt() {
+        List<ProfessionalCat> professionalCats = getAllCatProfessional.execute();
+        List<CodeNameOut> results = professionalCats.stream()
                 .map(cp -> objectMapper.convertValue(cp, CodeNameOut.class))
                 .toList();
         return new ResponseEntity<>(results, OK);
