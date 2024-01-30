@@ -19,7 +19,7 @@ public class Account {
     private UUID id;
     private String businessKey;
     private String designation;
-    private String accountCode;
+    private String code;
     private Customer customer;
     private Set<Customer> coOwners;
     private Set<Document> documentsRequired;
