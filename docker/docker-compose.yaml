@@ -9,15 +9,16 @@ services:
     ports:
       - "9080:9080"
     depends_on:
-      database:
+      db:
         condition: service_healthy
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/aam
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_aam:5432/aam
       - SPRING_DATASOURCE_USERNAME=aam
       - SPRING_DATASOURCE_PASSWORD=aam
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
 
-  database:
-    image: 'postgres:14-alpine'
+  db:
+    image: 'postgres:12-alpine'
     container_name: db_aam
     ports:
       - "5432:5432"

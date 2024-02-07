@@ -11,4 +11,9 @@ import lombok.*;
 @EqualsAndHashCode
 public class CustomerType extends CodeNameAbstract {
     private Long id;
+    public CustomerType(Long id, String code, String name){
+        this.id = id;
+        this.code = code;
+        this.name = name;
+    }
 }

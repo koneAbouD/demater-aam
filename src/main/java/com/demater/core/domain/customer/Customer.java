@@ -30,7 +30,7 @@ public class Customer {
     private MaritalStatus maritalStatus;
     private FamilyStatus familyStatus;
     private int numbChildrens;
-    private String customerCode;
+    private String code;
 
     public void create(String firstName, String lastNames, String matherFullNames){
         this.firstName = firstName;
@@ -50,6 +50,12 @@ public class Customer {
         this.maritalStatus = maritalStatus;
         this.familyStatus = familyStatus;
         this.numbChildrens = numbChildrens;
+    }
+    public String type() {
+        return type.getName();
+    }
+    public Long typeId(){
+        return type.getId();
     }
     public String nationality(){
         return nationality.getName();

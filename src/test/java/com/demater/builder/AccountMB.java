@@ -42,7 +42,10 @@ public class AccountMB {
         when(account.getType()).thenReturn(type);
         return this;
     }
-
+    public AccountMB withMotif(String motif) {
+        when(account.getMotif()).thenReturn(motif);
+        return this;
+    }
     public AccountMB withStatus(EStatus status) {
         when(account.getStatus()).thenReturn(status);
         return this;

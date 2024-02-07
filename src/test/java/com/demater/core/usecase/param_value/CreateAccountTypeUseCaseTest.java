@@ -4,7 +4,6 @@ import com.demater.builder.AccountTypeMB;
 import com.demater.core.domain.account.AccountType;
 import com.demater.core.port.AccountTypeRepository;
 import com.demater.core.usecase.account.exception.AccountTypeAlreadyExistsException;
-import com.demater.core.usecase.param_value.CreateAccountTypeUseCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

@@ -40,10 +40,16 @@ public class Account {
     public String type() {
         return type.getName();
     }
-    public Set<Profession> profetion(){
+    public Long typeId(){
+        return type.getId();
+    }
+    public Set<Profession> profession(){
         return customer.getProfessions();
     }
     public LegalCapacity legalCapacity(){
         return customer.getLegalCapacity();
+    }
+    public Long customerTypeId(){
+        return customer.typeId();
     }
 }

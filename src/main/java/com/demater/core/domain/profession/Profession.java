@@ -16,7 +16,6 @@ public class Profession {
     private ProfessionalCat professionalCat;
     private LocalDate hireDate;
     private Double income;
-
     private Employer employer;
 
     public String catProfessional() {
@@ -25,4 +24,5 @@ public class Profession {
     public String professionCode() {
         return getProfessionalCat().getCode();
     }
+
 }
